@@ -1,0 +1,16 @@
+.footer{
+  padding: 24px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer_logo{
+  max-width: 290px;
+}
+.footer_links{
+  display: flex;
+  align-items: center;
+}
+.footer_links>a{
+  max-width: 64px;
+}

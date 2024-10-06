@@ -1,0 +1,8 @@
+export {default as MainPage} from './MainPage'
+export {default as AboutPage} from './AboutPage'
+export {default as ContactsPage} from './ContactsPage'
+export {default as EntrancePage} from './EntrancePage'
+export {default as MatchesPage} from './MatchesPage'
+export {default as NewsPage} from './NewsPage'
+export {default as ShopPage} from './ShopPage'
+export {default as TeamPage} from './TeamPage'

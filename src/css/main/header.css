@@ -18,13 +18,13 @@
   padding: 15px 24px;
   min-height: 60px;
   border: 1px solid #fff;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-.header__list_item:hover{
+.header__list_item:hover {
   background-color: #fff;
   color: #000;
 }
-.header_btn{
+.header_btn {
   text-align: center;
   display: flex;
   align-items: center;
@@ -34,8 +34,20 @@
   min-height: 60px;
   border: 1px solid #fff;
   padding: 0 5px 0 22px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-.header_activePage{
+.header_activePage {
   background-color: #fff;
   color: #000;
+}
+.header_btn-icon {
+  stroke: #fff;
+}
+.header_btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+.header_btn:hover .header_btn-icon {
+  stroke: #000;
 }

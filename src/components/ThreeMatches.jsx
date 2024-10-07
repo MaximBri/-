@@ -11,7 +11,7 @@ const ThreeMatches = () => {
       {matches.map((item) => {
         if (!item.completed) {
           return (
-            <li className='match'>
+            <li className='match' key={item.id}>
               <h3 className='match_title-light'>МИР Российская премьер-лига</h3>
               <h2 className='match_time'>{item.time}</h2>
               <div className='match__about'>
@@ -35,6 +35,7 @@ const ThreeMatches = () => {
         }
         return (
           <li
+            key={item.id}
             className={
               item.data[0] > item.data[1] ? 'match green-bg' : 'match red-bg'
             }

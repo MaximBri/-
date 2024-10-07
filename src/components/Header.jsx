@@ -1,33 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../images/globals/logo.png'
 import userSvg from '../images/mainPage/ManIcon.svg'
 import '../css/main/header.css'
 
 const Header = () => {
+  const location = useLocation()
+  console.log(location.pathname)
   return (
     <header className='header'>
       <Link to='/' className='header_logo'>
         <img src={logo} alt='Logo' />
       </Link>
       <nav className='header__list'>
-        <Link className='header__list_item' to='/news'>
+        <Link className={location.pathname === '/news'? 'header__list_item header_activePage': 'header__list_item'} to='/news'>
           Новости
         </Link>
-        <Link className='header__list_item' to='/team'>
+        <Link className={location.pathname === '/team'? 'header__list_item header_activePage': 'header__list_item'} to='/team'>
           Команда
         </Link>
-        <Link className='header__list_item' to='/matches'>
+        <Link className={location.pathname === '/matches'? 'header__list_item header_activePage': 'header__list_item'} to='/matches'>
           Матчи
         </Link>
-        <Link className='header__list_item' to='/shop'>
+        <Link className={location.pathname === '/shop'? 'header__list_item header_activePage': 'header__list_item'} to='/shop'>
           Магазин
         </Link>
-        <Link className='header__list_item' to='/about'>
+        <Link className={location.pathname === '/about'? 'header__list_item header_activePage': 'header__list_item'} to='/about'>
           О клубе
         </Link>
-        <Link className='header__list_item' to='/contacts'>
+        <Link className={location.pathname === '/contacts'? 'header__list_item header_activePage': 'header__list_item'} to='/contacts'>
           Контакты
         </Link>
       </nav>

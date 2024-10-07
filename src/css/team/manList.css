@@ -1,0 +1,27 @@
+.man__box{
+  margin-top: 150px;
+  display: flex;
+  gap: 20px;
+  flex-grow: 1;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.man{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  flex-grow: 1;
+}
+.man>img{
+  border-radius: 36px;
+}
+.man_name{
+  font-size: 36px;
+  text-align: center;
+}
+.man_role{
+  font-size: 36px;
+  text-align: center;
+  color: #be0000;
+}

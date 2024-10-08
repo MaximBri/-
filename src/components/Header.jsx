@@ -10,6 +10,12 @@ const Header = () => {
   const location = useLocation()
   const [register, setRegister] = React.useState(false)
   const [auth, setAuth] = React.useState(false)
+  React.useEffect(() => {
+    if (register || auth) {
+      document.body.style.overflow = 'hidden';
+    }
+    else  document.body.style.overflow = 'visible';
+  }, [register, auth])
   const openRegister = () => {
     setAuth(false)
     setRegister(true)
@@ -105,12 +111,8 @@ const Header = () => {
           </svg>
         </span>
       </header>
-      {auth && (
-        <Auth func={openRegister} />
-      )}
-      {register && (
-        <Register func={openAuth}/>
-      )}
+      {auth && <Auth func={openRegister} />}
+      {register && <Register func={openAuth} />}
     </>
   )
 }

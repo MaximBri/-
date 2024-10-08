@@ -32,7 +32,7 @@ const Auth = ({ func }) => {
         login,
         password: pass,
       }
-      const apiUrl = 'https://your-api-endpoint.com/login'
+      const apiUrl = '/'
       fetch(apiUrl, {
         method: 'POST',
         headers: {

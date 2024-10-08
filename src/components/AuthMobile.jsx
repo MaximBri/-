@@ -33,7 +33,7 @@ const Auth = () => {
         login,
         password: pass,
       }
-      const apiUrl = '/'
+      const apiUrl = 'http://127.0.0.1:8000/api/auth/login' // убрать хард код
       fetch(apiUrl, {
         method: 'POST',
         headers: {

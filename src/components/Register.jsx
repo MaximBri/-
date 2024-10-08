@@ -36,11 +36,11 @@ const Register = ({ func }) => {
       const data = {
         email,
         password: pass,
-        name,
-        lastName,
+        first_name: name,
+        last_name: lastName,
       }
       console.log(data)
-      const apiUrl = 'https://your-api-endpoint.com/register'
+      const apiUrl = 'http://127.0.0.1:8000/api/auth/register' // убрать хард код
       fetch(apiUrl, {
         method: 'POST',
         headers: {

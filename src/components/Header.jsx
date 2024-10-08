@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import Register from './Register'
 import Auth from './Auth'
@@ -7,14 +7,15 @@ import '../css/main/header.css'
 import logo from '../images/globals/logo.png'
 
 const Header = () => {
+  // console.log('Header update...')
   const location = useLocation()
+  const navigate = useNavigate()
   const [register, setRegister] = React.useState(false)
   const [auth, setAuth] = React.useState(false)
   React.useEffect(() => {
     if (register || auth) {
-      document.body.style.overflow = 'hidden';
-    }
-    else  document.body.style.overflow = 'visible';
+      document.body.style.overflow = 'hidden'
+    } else document.body.style.overflow = 'visible'
   }, [register, auth])
   const openRegister = () => {
     setAuth(false)
@@ -23,6 +24,21 @@ const Header = () => {
   const openAuth = () => {
     setRegister(false)
     setAuth(true)
+  }
+  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth)
+  React.useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+  const authNavigate = () => {
+    if (screenWidth <= 768) {
+      navigate('auth')
+    } else setAuth(true)
   }
   return (
     <>
@@ -92,7 +108,7 @@ const Header = () => {
             Контакты
           </Link>
         </nav>
-        <span onClick={() => setAuth(true)} className='header_btn'>
+        <span onClick={() => authNavigate()} className='header_btn'>
           Войти
           <svg
             width='36'
@@ -111,8 +127,21 @@ const Header = () => {
           </svg>
         </span>
       </header>
-      {auth && <Auth func={openRegister} />}
-      {register && <Register func={openAuth} />}
+      {auth && (
+        <>
+          <div onClick={() => setAuth(false)} className='modal_wrapper'></div>
+          <Auth func={openRegister} />
+        </>
+      )}
+      {register && (
+        <>
+          <div
+            onClick={() => setRegister(false)}
+            className='modal_wrapper'
+          ></div>
+          <Register func={openAuth} />
+        </>
+      )}
     </>
   )
 }

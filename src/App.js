@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import {MainPage, AboutPage, ContactsPage, EntrancePage, MatchesPage, NewsPage, ShopPage, TeamPage} from './pages'
+import {MainPage, AboutPage, ContactsPage, EntrancePage, MatchesPage, NewsPage, ShopPage, TeamPage, NotFoundPage} from './pages'
 import MainLayout from './layouts/MainLayout'
 
 import './App.css'
@@ -22,6 +22,7 @@ function App() {
             <Route path='about' element={<AboutPage/>}/>
             <Route path='contacts' element={<ContactsPage/>}/>
           </Route>
+          <Route path='*' element={<NotFoundPage />}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -22,3 +22,49 @@ const matches = [
   },
 ]
 export default matches
+
+export const newMatches = [
+  {
+    id: 1,
+    completed: false,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
+  {
+    id: 2,
+    completed: false,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
+  {
+    id: 3,
+    completed: false,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
+  {
+    id: 4,
+    completed: true,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    score: [1, 1],
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
+  {
+    id: 5,
+    completed: true,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    score: [2, 1],
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
+]
+

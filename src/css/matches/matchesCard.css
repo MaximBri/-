@@ -1,0 +1,61 @@
+.matches__card {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.matches__card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 90px 40px 9px;
+  background-color: white;
+}
+
+.matches__card-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+.matches__card-item {
+  font-size: 14px;
+  color: #000;
+}
+
+.matches__card-tournament {
+  font-size: 20px;
+  color: #808080;
+}
+
+.matches__card-time {
+  font-size: 40px;
+}
+
+.matches__card-place {
+  font-size: 24px;
+}
+
+
+.matches__card-link {
+  background-color: #d32f2f;
+  color: white;
+  padding: 25px 50px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.matches__card-link:hover {
+  background-color: #c62828;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.matches__score {
+  color: #000;
+  font-size: 20px;
+}

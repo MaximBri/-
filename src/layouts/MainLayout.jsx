@@ -15,7 +15,6 @@ const MainLayout = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   return (
     <>
       { screenWidth >= 1400 && <Header />}

@@ -1,25 +1,60 @@
-.Nf{
+.Nf {
   overflow: hidden;
   width: 100%;
   position: relative;
 }
-.Nf_text{
+.Nf_text {
   padding-inline: 50px;
   margin-top: 50px;
   font-size: 96px;
 }
-.Nf_text>span{
+.Nf_text > span {
   font-size: 128px;
   margin-bottom: 24px;
 }
-.Nf_img{
+.Nf_img {
   width: 100%;
-  height: 640px;
+  max-height: 640px;
 }
-.Nf_logo{
+.Nf_logo {
   position: absolute;
   width: 150px;
   height: 150px;
   top: 40px;
   right: 40px;
+}
+@media (max-width: 1024px) {
+  .Nf_text {
+    text-align: center;
+    padding-inline: 50px;
+    margin-top: 50px;
+    font-size: 48px;
+  }
+  .Nf{
+    background: linear-gradient(163deg, #000 76.55%, #2c271a 100%);
+    padding-bottom: 150px;
+  }
+  .Nf_logo {
+    width: 100px;
+    height: 100px;
+    top: 0px;
+    right: 0px;
+  }
+  .Nf_img {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .Nf_text {
+    padding-inline: 10px;
+    margin-top: 150px;
+  }
+  .Nf_img {
+    margin-top: 100px;
+    display: block;
+  }
+  .Nf{
+    background: linear-gradient(133deg, #000 46.55%, #2c271a 100%);
+    padding-bottom: 0px;
+  }
 }

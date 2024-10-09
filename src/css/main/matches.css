@@ -23,6 +23,7 @@
   background: linear-gradient(180deg, #fff 0%, #439c19 100%);
 }
 .match_title, .match_title-light {
+  text-align: center;
   font-size: 20px;
   margin-bottom: 16px;
 }
@@ -80,4 +81,43 @@
   margin-top: 10px;
   color: #dadada;
   font-size: 20px;
+}
+@media (max-width: 1400px){
+  .matches__box{
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+@media (max-width: 500px){
+  .match__about {
+    gap: 10px;
+  }
+  .match {
+    padding: 10px 10px 15px;
+  }
+  .match__about > img{
+    max-width: 64px;
+  }
+  .match_time{
+    font-size: 15px;
+  }
+  .match_title{
+    font-size: 10px;
+  }
+  .match_info-time {
+    font-size: 16px;
+  }
+  .match_info-time>span{
+    gap: 20px;
+    font-size: 10px;
+  }
+  .match_info {
+    font-size: 24px;
+  }
+  .match_btn{
+    font-size: 10px;
+  }
+  .match_btm-text{
+    font-size: 10px;
+  }
 }

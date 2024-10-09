@@ -12,3 +12,8 @@ body {
 .container{
   margin-inline: 50px;
 }
+@media (max-width: 768px){
+  .container{
+    margin-inline: 30px;
+  }
+}

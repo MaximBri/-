@@ -14,3 +14,11 @@
 .footer_links>a{
   max-width: 64px;
 }
+.footer_links>a>img{
+  width: 100%;
+}
+@media (max-width: 500px){
+  .footer{
+    flex-direction: column-reverse;
+  }
+}

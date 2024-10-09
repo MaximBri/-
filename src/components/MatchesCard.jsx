@@ -29,4 +29,5 @@ const Mathes = ({type}) => {
   )
 }
 
+
 export default Mathes

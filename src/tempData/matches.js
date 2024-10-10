@@ -66,5 +66,14 @@ export const newMatches = [
     place: 'ЛУКОЙЛ Арена',
     url: '#',
   },
+  {
+    id: 6,
+    completed: true,
+    tournament: 'МИР Российская премьер-лига',
+    time: '19 октября, 16:30',
+    score: [0, 3],
+    place: 'ЛУКОЙЛ Арена',
+    url: '#',
+  },
 ]
 

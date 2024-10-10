@@ -1,0 +1,26 @@
+.shop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 3px solid #BE0000;
+  padding-bottom: 100px;
+}
+
+.shop__title {
+  font-size: 128px;
+  padding-bottom: 100px;
+}
+
+.test {
+  position: relative;
+}
+
+.shop__img-bg {
+  width: 100%;
+}
+
+.shop__img-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

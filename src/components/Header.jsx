@@ -12,9 +12,16 @@ const Header = () => {
   // console.log('Header update...')
   const location = useLocation()
   const navigate = useNavigate()
+// <<<<<<< HEAD
   const dispatch = useDispatch()
   const userData = useSelector((state) => state.person)
   const {auth, register} = useSelector((state) => state.auth)
+// =======
+//   const authorized = useSelector(getAuth);
+//   console.log(authorized)
+//   const [register, setRegister] = React.useState(false)
+//   const [auth, setAuth] = React.useState(false)
+// >>>>>>> 45cd1c52c2c2d1b287209f38c93ba35d5cb84ae3
   React.useEffect(() => {
     if (register || auth) {
       document.body.style.overflow = 'hidden'

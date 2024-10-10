@@ -1,4 +1,3 @@
-// src/features/counterSlice.js
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -18,11 +17,10 @@ export const personSlice = createSlice({
       console.log(state.auth)
     },
     setData: (state, action) => {
-      console.log(action.payload)
       state.data.email = action.payload.email
       state.data.name = action.payload.first_name
       state.auth = true
-      console.log(state.auth, state.data.email, state.data.name)
+      // console.log(state.auth, state.data.email, state.data.name)
     }
   },
 })

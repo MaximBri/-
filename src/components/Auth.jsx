@@ -1,11 +1,11 @@
 import React from 'react'
 
+import useAuthLogic from './Hooks/authLogic'
 import '../css/main/auth.css'
 import bg_img from '../images/NotFoundPage/nf-img.png'
 import iconSvg from '../images/mainPage/attention.svg'
-import useAuthLogic from './Hooks/authLogic'
 
-const Auth = ({ func }) => {
+const Auth = ({ func, close }) => {
   const { login, setLogin, pass, setPass, textForUser, sendForm } = useAuthLogic();
   return (
     <section className='entr'>

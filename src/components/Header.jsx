@@ -1,33 +1,32 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { getAuth } from '../RTK/slices/personSlice'
+import { setAuthForm, setRegisterForm } from '../RTK/slices/authFormsSlice'
 import Register from './Register'
 import Auth from './Auth'
 import '../css/main/header.css'
 import logo from '../images/globals/logo.png'
-import { useSelector } from 'react-redux'
 
 const Header = () => {
   // console.log('Header update...')
   const location = useLocation()
   const navigate = useNavigate()
-  const authorized = useSelector(getAuth());
-  console.log(authorized)
-  const [register, setRegister] = React.useState(false)
-  const [auth, setAuth] = React.useState(false)
+  const dispatch = useDispatch()
+  const userData = useSelector((state) => state.person)
+  const {auth, register} = useSelector((state) => state.auth)
   React.useEffect(() => {
     if (register || auth) {
       document.body.style.overflow = 'hidden'
     } else document.body.style.overflow = 'visible'
   }, [register, auth])
   const openRegister = () => {
-    setAuth(false)
-    setRegister(true)
+    dispatch(setAuthForm(false))
+    dispatch(setRegisterForm(true))
   }
   const openAuth = () => {
-    setRegister(false)
-    setAuth(true)
+    dispatch(setRegisterForm(false))
+    dispatch(setAuthForm(true))
   }
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth)
   React.useEffect(() => {
@@ -42,7 +41,7 @@ const Header = () => {
   const authNavigate = () => {
     if (screenWidth <= 768) {
       navigate('auth')
-    } else setAuth(true)
+    } else dispatch(setAuthForm(true))
   }
   return (
     <>
@@ -112,35 +111,57 @@ const Header = () => {
             Контакты
           </Link>
         </nav>
-        <span onClick={() => authNavigate()} className='header_btn'>
-          Войти
-          <svg
-            width='36'
-            height='40'
-            viewBox='0 0 36 40'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              className='header_btn-icon'
-              d='M34 38V34C34 31.8783 33.1571 29.8434 31.6569 28.3431C30.1566 26.8429 28.1217 26 26 26H10C7.87827 26 5.84344 26.8429 4.34315 28.3431C2.84285 29.8434 2 31.8783 2 34V38M26 10C26 14.4183 22.4183 18 18 18C13.5817 18 10 14.4183 10 10C10 5.58172 13.5817 2 18 2C22.4183 2 26 5.58172 26 10Z'
-              strokeWidth='4'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </span>
+        {!userData.auth ? (
+          <span onClick={() => authNavigate()} className='header_btn'>
+            Войти
+            <svg
+              width='36'
+              height='40'
+              viewBox='0 0 36 40'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                className='header_btn-icon'
+                d='M34 38V34C34 31.8783 33.1571 29.8434 31.6569 28.3431C30.1566 26.8429 28.1217 26 26 26H10C7.87827 26 5.84344 26.8429 4.34315 28.3431C2.84285 29.8434 2 31.8783 2 34V38M26 10C26 14.4183 22.4183 18 18 18C13.5817 18 10 14.4183 10 10C10 5.58172 13.5817 2 18 2C22.4183 2 26 5.58172 26 10Z'
+                strokeWidth='4'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+          </span>
+        ) : (
+          <span onClick={() => navigate('user')} className='header_btn'>
+            {userData.data.name}
+            <svg
+              width='48'
+              height='48'
+              viewBox='0 0 48 48'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <rect width='48' height='48' rx='24' fill='white' />
+              <path
+                d='M40 42V38C40 35.8783 39.1571 33.8434 37.6569 32.3431C36.1566 30.8429 34.1217 30 32 30H16C13.8783 30 11.8434 30.8429 10.3431 32.3431C8.84285 33.8434 8 35.8783 8 38V42M32 14C32 18.4183 28.4183 22 24 22C19.5817 22 16 18.4183 16 14C16 9.58172 19.5817 6 24 6C28.4183 6 32 9.58172 32 14Z'
+                stroke='black'
+                strokeWidth='4'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+          </span>
+        )}
       </header>
       {auth && (
         <>
-          <div onClick={() => setAuth(false)} className='modal_wrapper'></div>
+          <div onClick={() => dispatch(setAuthForm(false))} className='modal_wrapper'></div>
           <Auth func={openRegister} />
         </>
       )}
       {register && (
         <>
           <div
-            onClick={() => setRegister(false)}
+            onClick={() => dispatch(setRegisterForm(false))}
             className='modal_wrapper'
           ></div>
           <Register func={openAuth} />

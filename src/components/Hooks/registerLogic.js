@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { setData } from '../../RTK/slices/personSlice'
+import { setRegisterForm } from '../../RTK/slices/authFormsSlice'
 
 const useRegisterLogic = () => {
   const dispatch = useDispatch()
@@ -67,6 +68,7 @@ const useRegisterLogic = () => {
           else {
             setTextForUser('')
             dispatch(setData(data))
+            dispatch(setRegisterForm(false))
             navigate('/')
           }
         })

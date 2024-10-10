@@ -11,6 +11,7 @@ import {
   ShopPage,
   TeamPage,
   NotFoundPage,
+  UserPage,
 } from './pages'
 import { store } from './RTK/store'
 import MainLayout from './layouts/MainLayout'
@@ -36,6 +37,7 @@ function App() {
               <Route path='shop' element={<ShopPage />} />
               <Route path='about' element={<AboutPage />} />
               <Route path='contacts' element={<ContactsPage />} />
+              <Route path='user' element={<UserPage />} />
             </Route>
             <Route path='*' element={<NotFoundPage />} />
             <Route path='auth' element={<AuthMobile />} />

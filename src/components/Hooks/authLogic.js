@@ -2,8 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-// import { setAuth } from '../../RTK/slices/personSlice'
 import { setData } from '../../RTK/slices/personSlice'
+import { setAuthForm } from '../../RTK/slices/authFormsSlice'
 
 const useAuthLogic = () => {
   const dispatch = useDispatch()
@@ -34,7 +34,6 @@ const useAuthLogic = () => {
         email: login,
         password: pass,
       }
-      console.log(JSON.stringify(data))
       const apiUrl = 'http://127.0.0.1:8000/api/auth/login' // убрать хард код
       fetch(apiUrl, {
         method: 'POST',
@@ -47,18 +46,18 @@ const useAuthLogic = () => {
           return response.json()
         })
         .then((responseData) => {
-          console.log('Success:', responseData)
           if(responseData.error){
             setTextForUser('Неправильный логин или пароль')
           }
           else {
             const data = responseData.success.user
             dispatch(setData({email: data.email, first_name: data.full_name}))
+            dispatch(setAuthForm(false))
             navigate('/')
           }
         })
         .catch((error) => {
-          console.error('Error:', error)
+          console.log('Error:', error)
           if (error.message === 'Invalid credentials')
             setTextForUser('Неправильный логин или пароль')
           else setTextForUser('Произошла ошибка. Попробуйте снова')

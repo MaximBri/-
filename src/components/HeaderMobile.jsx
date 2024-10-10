@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import logo from '../images/globals/logo.png'
@@ -9,7 +10,7 @@ import '../css/main/headerMobile.css'
 
 const HeaderMobile = () => {
   const [isOpen, setIsOpen] = React.useState(false)
-
+  const userData = useSelector((state) => state.person)
   return (
     <>
       <header className='header_mobile'>
@@ -23,35 +24,61 @@ const HeaderMobile = () => {
           <Link to='shop'>
             <img src={backetSvg} alt='basket' />
           </Link>
-          <Link to='auth'>
+          <Link to={userData.auth ? 'user': 'auth'}>
             <img src={personSvg} alt='person' />
           </Link>
         </nav>
       </header>
-
       <nav
         className={isOpen ? 'burger_menu burger_menu-active' : 'burger_menu'}
       >
-        <div onClick={() => setIsOpen(false)} className={isOpen?'burger_close': 'hidden'}>
+        <div
+          onClick={() => setIsOpen(false)}
+          className={isOpen ? 'burger_close' : 'hidden'}
+        >
           <div></div>
           <div></div>
         </div>
-        <Link to='news' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='news'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           Новости
         </Link>
-        <Link to='team' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='team'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           Команда
         </Link>
-        <Link to='matches' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='matches'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           Матчи
         </Link>
-        <Link to='shop' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='shop'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           Магазин
         </Link>
-        <Link to='about' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='about'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           О клубе
         </Link>
-        <Link to='contacts' onClick={() => setIsOpen(false)} className='burger_menu_item'>
+        <Link
+          to='contacts'
+          onClick={() => setIsOpen(false)}
+          className='burger_menu_item'
+        >
           Контакты
         </Link>
       </nav>

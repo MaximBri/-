@@ -83,6 +83,10 @@ def login(request, payload: LoginSchema):
             "message": "Login successful",
             "refresh": str(refresh),
             "access": str(refresh.access_token),
+            "user": {
+                "email": user.email,
+                "full_name": f'{user.first_name} {user.last_name}' if user.last_name else user.first_name,
+            }
         }
     })
 

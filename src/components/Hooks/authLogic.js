@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { setAuth } from '../../RTK/slices/personSlice'
+// import { setAuth } from '../../RTK/slices/personSlice'
+import { setData } from '../../RTK/slices/personSlice'
 
 const useAuthLogic = () => {
   const dispatch = useDispatch()
@@ -30,9 +31,10 @@ const useAuthLogic = () => {
   const sendForm = () => {
     if (canSend) {
       const data = {
-        login,
+        email: login,
         password: pass,
       }
+      console.log(JSON.stringify(data))
       const apiUrl = 'http://127.0.0.1:8000/api/auth/login' // убрать хард код
       fetch(apiUrl, {
         method: 'POST',
@@ -42,17 +44,18 @@ const useAuthLogic = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              'Network response was not ok ' + response.statusText
-            )
-          }
           return response.json()
         })
         .then((responseData) => {
           console.log('Success:', responseData)
-          dispatch(setAuth(true))
-          navigate('/')
+          if(responseData.error){
+            setTextForUser('Неправильный логин или пароль')
+          }
+          else {
+            const data = responseData.success.user
+            dispatch(setData({email: data.email, first_name: data.full_name}))
+            navigate('/')
+          }
         })
         .catch((error) => {
           console.error('Error:', error)

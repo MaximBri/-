@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { setAuth } from '../../RTK/slices/personSlice'
+import { setData } from '../../RTK/slices/personSlice'
 
 const useRegisterLogic = () => {
   const dispatch = useDispatch()
@@ -39,11 +39,10 @@ const useRegisterLogic = () => {
     if (canSend) {
       const data = {
         email,
-        password: pass,
         first_name: name,
         last_name: lastName,
+        password: pass,
       }
-      console.log(data)
       const apiUrl = 'http://127.0.0.1:8000/api/auth/register' // убрать хард код
       fetch(apiUrl, {
         method: 'POST',
@@ -53,20 +52,26 @@ const useRegisterLogic = () => {
         body: JSON.stringify(data),
       })
         .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              'Network response was not ok ' + response.statusText
-            )
-          }
           return response.json()
         })
         .then((responseData) => {
-          console.log('Success:', responseData)
-          dispatch(setAuth(true))
-          navigate('/')
+          if (responseData.detail) {
+            setTextForUser(
+              'Пароль должен содержать 1 заглавную букву (A - Z), 1 цифру и быть не менее 8 символов'
+            )
+          } else if (
+            responseData.error
+          ) {
+            setTextForUser('Вы уже зарегистрированы')
+          }
+          else {
+            setTextForUser('')
+            dispatch(setData(data))
+            navigate('/')
+          }
         })
         .catch((error) => {
-          console.error('Error:', error)
+          console.log(error)
           setTextForUser('Произошла ошибка. Попробуйте снова')
         })
     }

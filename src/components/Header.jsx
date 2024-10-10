@@ -1,15 +1,19 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
+import { getAuth } from '../RTK/slices/personSlice'
 import Register from './Register'
 import Auth from './Auth'
 import '../css/main/header.css'
 import logo from '../images/globals/logo.png'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
   // console.log('Header update...')
   const location = useLocation()
   const navigate = useNavigate()
+  const authorized = useSelector(getAuth());
+  console.log(authorized)
   const [register, setRegister] = React.useState(false)
   const [auth, setAuth] = React.useState(false)
   React.useEffect(() => {

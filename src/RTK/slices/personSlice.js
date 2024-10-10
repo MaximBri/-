@@ -5,7 +5,6 @@ const initialState = {
   auth: false,
   data: {
     name: '',
-    surName: '',
     email: '',
   },
 }
@@ -18,9 +17,16 @@ export const personSlice = createSlice({
       state.auth = true
       console.log(state.auth)
     },
+    setData: (state, action) => {
+      console.log(action.payload)
+      state.data.email = action.payload.email
+      state.data.name = action.payload.first_name
+      state.auth = true
+      console.log(state.auth, state.data.email, state.data.name)
+    }
   },
 })
 export const getAuth = (state) => state.person.auth
-export const { setAuth } = personSlice.actions
+export const { setAuth, setData } = personSlice.actions
 
 export default personSlice.reducer

@@ -36,22 +36,22 @@ const HeaderMobile = () => {
           <div></div>
           <div></div>
         </div>
-        <Link to='news' className='burger_menu_item'>
+        <Link to='news' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           Новости
         </Link>
-        <Link to='team' className='burger_menu_item'>
+        <Link to='team' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           Команда
         </Link>
-        <Link to='matches' className='burger_menu_item'>
+        <Link to='matches' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           Матчи
         </Link>
-        <Link to='shop' className='burger_menu_item'>
+        <Link to='shop' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           Магазин
         </Link>
-        <Link to='about' className='burger_menu_item'>
+        <Link to='about' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           О клубе
         </Link>
-        <Link to='contacts' className='burger_menu_item'>
+        <Link to='contacts' onClick={() => setIsOpen(false)} className='burger_menu_item'>
           Контакты
         </Link>
       </nav>

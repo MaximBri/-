@@ -12,7 +12,7 @@ const Header = () => {
   // console.log('Header update...')
   const location = useLocation()
   const navigate = useNavigate()
-  const authorized = useSelector(getAuth());
+  const authorized = useSelector(getAuth);
   console.log(authorized)
   const [register, setRegister] = React.useState(false)
   const [auth, setAuth] = React.useState(false)

@@ -17,7 +17,7 @@
   flex-grow: 1;
 }
 .red-bg{
-  background: linear-gradient(180deg, #fff 0%, #be0000 100%);;
+  background: linear-gradient(180deg, #fff 0%, #be0000 100%);
 }
 .green-bg{
   background: linear-gradient(180deg, #fff 0%, #439c19 100%);

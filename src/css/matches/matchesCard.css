@@ -13,6 +13,18 @@
   background-color: white;
 }
 
+.matches__card-content.win {
+  background: linear-gradient(180deg, #fff 0%, #439c19 100%);
+}
+
+.matches__card-content.lose {
+  background: linear-gradient(180deg, #fff 0%, #be0000 100%);
+}
+
+.matches__card-content.draw {
+  background: linear-gradient(90deg, #FFFFFF 0%, #999999 100%);
+}
+
 .matches__card-items {
   display: flex;
   flex-direction: column;
@@ -57,5 +69,5 @@
 
 .matches__score {
   color: #000;
-  font-size: 20px;
+  font-size: 48px;
 }

@@ -1,0 +1,141 @@
+.matches__card-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin-bottom: 55px;
+}
+
+.matches__card-content-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 18px;
+}
+
+.matches__card-img-mobile {
+  width: 128px;
+}
+
+.matches__card-items-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.matches__card-tournament-mobile {
+  font-size: 10px;
+  color: #808080;
+  margin-bottom: 18px;
+  margin-top: 25px;
+}
+
+.matches__card-time-mobile {
+  color: #000;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.matches__score-mobile {
+  color: #000;
+  font-size: 36px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.matches__card-clocks-mobile {
+  display: flex;
+  gap: 20px;
+}
+
+.matches__card-clock-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.matches__card-clock-mobile .clock {
+  color: #d32f2f;
+  font-size: 24px;
+}
+
+.matches__card-clock-mobile span {
+  color: #000;
+  font-size: 14px;
+}
+
+.matches__card-link-mobile {
+  background-color: #d32f2f;
+  color: white;
+  padding: 15px 45px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.matches__card-place-mobile {
+  font-size: 10px;
+  color: #808080;
+  margin-bottom: 12px;
+  margin-top: 15px;
+}
+
+.mathes__card-play-mobile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.matches__card-content-mobile.win {
+  background: linear-gradient(180deg, #fff 0%, #439c19 100%);
+}
+
+.matches__card-content-mobile.lose {
+  background: linear-gradient(180deg, #fff 0%, #be0000 100%);
+}
+
+.matches__card-content-mobile.draw {
+  background: linear-gradient(90deg, #FFFFFF 0%, #999999 100%);
+}
+
+.card__link-red-mobile {
+  border: 2px solid #d32f2f;
+}
+
+.card__link-white-mobile {
+  border: 2px solid #fff;
+  color: #fff;
+  background: none;
+}
+
+@media (max-width: 535px) {
+  .matches__card-img-mobile {
+    width: 64px;
+  }
+
+  .matches__card-time-mobile {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .matches__score-mobile {
+    font-size: 24px;
+    margin-top: 0;
+  }
+
+  .matches__card-clock-mobile .clock {
+    font-size: 16px;
+  }
+
+  .matches__card-clock-mobile span {
+    font-size: 10px;
+  }
+
+  .matches__card-link-mobile {
+    padding: 10px 30px;
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+}

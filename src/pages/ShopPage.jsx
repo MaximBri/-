@@ -1,4 +1,3 @@
-import React from 'react'
 import bgShop from '../images/shop/bg-shop.png'
 import logoShop from '../images/shop/logo-shop.png'
 import { Forms } from '../components/shop/Forms'

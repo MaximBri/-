@@ -1,31 +1,48 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../css/matches/matchesPage.css'
-import ThreeMatches from '../components/ThreeMatches'
 import bgMatches from '../images/matchesPage/matchesMain.jpg'
-import Matches from '../components/MatchesCard'
+import { newMatches } from '../tempData/matches'
+import MatchesCard from '../components/MatchesCard'
+import MatchesCardMobile from '../components/MatchesCardMobile'
 import dotSvg from '../images/teamPage/dot.svg'
 
 const MatchesPage = () => {
   const [current, setCurrent] = useState(true)
   const [activeMonth, setActiveMonth] = useState(0)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleClick = (index) => {
     setActiveMonth(activeMonth === index ? null : index)
   }
 
-  const upcomingMathes = [
-    { name: 'Октябрь 2024', matches: <Matches type='upcoming' /> },
-    { name: 'Ноябрь 2024', matches: <Matches type='upcoming' /> },
-    { name: 'Декабрь 2024', matches: <Matches type='upcoming' /> },
-    { name: 'Январь 2025', matches: <Matches type='upcoming' /> },
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const allMonths = [
+    { name: 'Октябрь 2024', future: true },
+    { name: 'Ноябрь 2024', future: true },
+    { name: 'Декабрь 2024', future: true },
+    { name: 'Январь 2025', future: true},
+    { name: 'Январь 2024', future: false },
+    { name: 'Декабрь 2023', future: false },
   ]
 
-  const pastMatches = [
-    { name: 'Декабрь 2023', matches: <Matches type='past' /> },
-    { name: 'Январь 2024', matches: <Matches type='past' /> },
-  ]
+  const filteredMonths = allMonths.filter(month => current ? month.future : !month.future)
 
-  const months = current ? upcomingMathes : pastMatches
+  const filteredMatches = newMatches.filter(match => {
+    if (current && !match.completed) {
+      return true
+    } else if (!current && match.completed) {
+      return true
+    } else return false
+  })
 
   return (
     <>
@@ -34,7 +51,6 @@ const MatchesPage = () => {
           <img src={bgMatches} alt='bg-image' />
           <h1 className='matches__title'>Матчи</h1>
         </div>
-        <ThreeMatches />
         <div className='matches__info'>
           <div className='matches__info-btns'>
             <span
@@ -87,7 +103,7 @@ const MatchesPage = () => {
           </div>
         </div>
         <ul className='matches__info-date-items'>
-          {months.map((month, i) => (
+          {filteredMonths.map((month, i) => (
             <li key={i} className='matches__info-date-item'>
               <div
                 className='matches__info-date-item-title'
@@ -97,12 +113,18 @@ const MatchesPage = () => {
                 <img
                   src={dotSvg}
                   alt='team logo'
-                  className={activeMonth === i ? 'open' : ''}
+                  className={`dot__svg ${activeMonth === i ? 'open' : ''}`}
                   style={{ transition: 'transform 0.3s ease' }}
                 />
               </div>
               <div className='matches__info-date-item-content'>
-                {activeMonth === i && month.matches}
+                {activeMonth === i && (
+                  screenWidth <= 768 ? (
+                    <MatchesCardMobile matches={filteredMatches} />
+                  ) : (
+                    <MatchesCard matches={filteredMatches} />
+                  )
+                )}
               </div>
             </li>
           ))}

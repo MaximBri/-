@@ -11,7 +11,7 @@ export const Accessories = () => {
         <div className='accessories__card' key={i}>
           <img className='accessories__card-img' src={item.img} alt="" />
           <h4 className='accessories__card-name'>{item.name}</h4>
-          <div>
+          <div className='accessories__card-info'>
             <span className='accessories__card-price'>{item.price}  ₽</span>
             <Link className='accessories__card-link' to='#' >В корзину</Link>
           </div>

@@ -113,7 +113,7 @@ const MatchesPage = () => {
                 <img
                   src={dotSvg}
                   alt='team logo'
-                  className={activeMonth === i ? 'open' : ''}
+                  className={`dot__svg ${activeMonth === i ? 'open' : ''}`}
                   style={{ transition: 'transform 0.3s ease' }}
                 />
               </div>

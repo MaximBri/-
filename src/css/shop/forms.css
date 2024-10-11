@@ -14,7 +14,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 0 20px;
-  gap: 50px;
+  gap: 40px;
 }
 
 .forms__card {
@@ -30,6 +30,7 @@
 
 .forms__card-name {
   font-size: 64px;
+  font-weight: 300;
   margin-bottom: 45px;
 }
 
@@ -61,4 +62,42 @@
 
 .forms__card-link:hover {
   background-color: #c62828;
+}
+
+
+@media (max-width: 1000px) {
+  .forms__cards {
+    justify-content: center;
+  }
+  .forms__title {
+    display: flex;
+    justify-content: center;
+    font-size: 96px;
+  }
+}
+
+@media (max-width: 768px) {
+  .forms__card-info{
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 560px) {
+  .forms__title {
+    font-size: 48px;
+  }
+  .forms__card-name {
+    font-size: 40px;
+  }
+  .forms__card-info{
+    justify-content: space-around;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .forms__card-info{
+    justify-content: center;
+    gap: 20px;
+  }
 }

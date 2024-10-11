@@ -10,7 +10,7 @@ export const Forms = () => {
         {shopForms.map(item => (
           <div className='forms__card' key={item.id}>
             <img className='forms__card-img' src={item.img} alt="" />
-            <h4 className='forms__card-name'>{item.name}</h4>
+            <span className='forms__card-name'>{item.name}</span>
             <span className='forms__card-sizes'>{item.sizes.join(' | ')}</span>
             <div className='forms__card-info'>
               <span className='forms__card-price'>{item.price}  ₽</span>

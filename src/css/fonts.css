@@ -13,3 +13,11 @@
   font-display: swap;
   font-style: normal;
 }
+@font-face {
+  font-family: "Museo Sans Cyrl";
+  src: local("Museo Sans Cyrl"),
+  url(../fonts/MuseoSansCyrl-300.woff2) format(woff2);
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}

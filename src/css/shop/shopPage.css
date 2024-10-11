@@ -24,3 +24,24 @@
   right: 0;
   top: 0;
 }
+
+@media (max-width: 1250px) {
+  .shop__title {
+    font-size: 72px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .shop__title {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .shop {
+    padding-bottom: 0;
+  }
+  .shop__img-logo {
+    display: none;
+  }
+}

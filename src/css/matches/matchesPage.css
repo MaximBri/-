@@ -135,13 +135,26 @@
   .matches__title {
     font-size: 32px;
   }
-  .matches__info-btn{
+
+  .matches__info-btn {
     font-size: 16px;
   }
-  .matches__info-select-item-title{
+
+  .matches__info-select-item-title {
     font-size: 20px;
   }
+
   .matches__info-date {
     font-size: 20px;
+  }
+
+  .matches__info-select-item-img {
+    width: 16px;
+    height: 8px;
+  }
+
+  .dot__svg {
+    width: 16px;
+    height: 8px;
   }
 }

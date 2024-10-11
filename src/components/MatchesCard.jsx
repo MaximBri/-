@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom';
-import { newMatches } from '../tempData/matches';
 import teamLogo from '../images/matchesPage/krasnodar-logo.png';
+import play from '../images/matchesPage/play.svg'
 import '../css/matches/matchesCard.css';
 
-const Matches = ({ type }) => {
-  const matchesData =
-    type === 'upcoming'
-      ? newMatches.filter((match) => !match.completed)
-      : newMatches.filter((match) => match.completed);
+const MatchesCard = ({ matches }) => {
+
 
   const getMatchResult = (score) => {
     if (!score) return '';
@@ -23,12 +20,10 @@ const Matches = ({ type }) => {
 
   return (
     <div className="matches__card">
-      {matchesData.map((match) => {
-        const resultClass = getMatchResult(match.score);
-
+      {matches.map((match) => {
         return (
           <div
-            className={`matches__card-content ${resultClass}`}
+            className={`matches__card-content ${getMatchResult(match.score)}`}
             key={match.id}
           >
             <img className="matches__card-img" src={teamLogo} alt="team logo" />
@@ -40,8 +35,15 @@ const Matches = ({ type }) => {
               )}
               <h3 className="matches__card-item matches__card-place">{match.place}</h3>
             </div>
-            <Link to={match.url} className="matches__card-link">
-              КУПИТЬ БИЛЕТ
+            <Link
+              to={match.url}
+              className={`matches__card-link ${match.completed ? 'card__link-white' : 'card__link-red'}`}>
+              {match.completed
+                ? <div className='mathes__card-play'>
+                  <img src={play} alt="play" />
+                  Репортаж
+                </div>
+                : 'КУПИТЬ БИЛЕТ'}
             </Link>
           </div>
         );
@@ -50,4 +52,4 @@ const Matches = ({ type }) => {
   );
 };
 
-export default Matches;
+export default MatchesCard;

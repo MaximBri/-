@@ -9,8 +9,9 @@ import newsImg from '../images/newsPage/news-img.png'
 const NewsPage = () => {
   const [page, setPage] = React.useState(1)
   const API_URL = 'api'
-  React.useEffect(() => { // для показа новостей при клике на кнопку
-    // 
+  React.useEffect(() => {
+    // для показа новостей при клике на кнопку
+    //
   }, [page])
   return (
     <>
@@ -31,12 +32,15 @@ const NewsPage = () => {
                   </Link>
                 </div>
                 <img className='new_img' src={newsImg} alt='match' />
+                <h4 className='news_time'>{item.time}</h4>
               </li>
             )
           })}
         </ul>
         <div className='news_bottom'>
-          <span onClick={() => setPage(page+1)} className='news_button'>Показать ещё</span>
+          <span onClick={() => setPage(page + 1)} className='news_button'>
+            Показать ещё
+          </span>
         </div>
       </div>
     </>

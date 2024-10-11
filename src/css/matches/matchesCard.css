@@ -33,7 +33,6 @@
 }
 
 .matches__card-item {
-  font-size: 14px;
   color: #000;
 }
 
@@ -59,6 +58,16 @@
   cursor: pointer;
 }
 
+.card__link-red {
+  border: 2px solid #d32f2f;
+}
+
+.card__link-white {
+  border: 2px solid #fff;
+  color: #fff;
+  background: none;
+}
+
 .matches__card-link:hover {
   background-color: #c62828;
 }
@@ -70,4 +79,22 @@
 .matches__score {
   color: #000;
   font-size: 48px;
+}
+
+@media (max-width: 1000px) {
+  .matches__card-content {
+    padding-right: 10px;
+  }
+
+  .matches__card-tournament {
+    font-size: 16px;
+  }
+
+  .matches__card-time {
+    font-size: 24px;
+  }
+
+  .matches__card-place {
+    font-size: 16px;
+  }
 }

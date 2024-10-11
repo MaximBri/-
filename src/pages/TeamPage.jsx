@@ -14,26 +14,62 @@ const TeamPage = () => {
   const [adminOpen, setAdminOpen] = React.useState(false)
   return (
     <section className='team'>
-      <img className='team_bg' src={bgImg} alt='background-image' />
+      <div className='background-wrapper'>
+        <img className='team_bg' src={bgImg} alt='background-image' />
+        <h1 className='background_title'>КОМАНДА</h1>
+      </div>
       <ul className='team__list'>
         <li className='team_item'>
-          <div onClick={() => setTeamOpen(!teamOpen)} className={teamOpen? 'team_item-wrapper': 'team_item-wrapper team_item-withLine'}>
+          <div
+            onClick={() => setTeamOpen(!teamOpen)}
+            className={
+              teamOpen
+                ? 'team_item-wrapper'
+                : 'team_item-wrapper team_item-withLine'
+            }
+          >
             <h2 className='team__list_item'>Игроки</h2>
-            <img className={teamOpen? 'team__item_dot open': 'team__item_dot'} src={dotSvg} alt='dot' />
+            <img
+              className={teamOpen ? 'team__item_dot open' : 'team__item_dot'}
+              src={dotSvg}
+              alt='dot'
+            />
           </div>
-          {teamOpen && <Players/>}
+          {teamOpen && <Players />}
         </li>
         <li className='team_item'>
-          <div onClick={() => setTrenersOpen(!trenersOpen)} className={trenersOpen? 'team_item-wrapper': 'team_item-wrapper team_item-withLine'}>
+          <div
+            onClick={() => setTrenersOpen(!trenersOpen)}
+            className={
+              trenersOpen
+                ? 'team_item-wrapper'
+                : 'team_item-wrapper team_item-withLine'
+            }
+          >
             <h2 className='team__list_item'>Тренерский штаб</h2>
-            <img className={trenersOpen? 'team__item_dot open': 'team__item_dot'} src={dotSvg} alt='dot' />
+            <img
+              className={trenersOpen ? 'team__item_dot open' : 'team__item_dot'}
+              src={dotSvg}
+              alt='dot'
+            />
           </div>
           {trenersOpen && <ManList list={treners} />}
         </li>
         <li className='team_item'>
-          <div onClick={() => setAdminOpen(!adminOpen)} className={adminOpen? 'team_item-wrapper': 'team_item-wrapper team_item-withLine'}>
+          <div
+            onClick={() => setAdminOpen(!adminOpen)}
+            className={
+              adminOpen
+                ? 'team_item-wrapper'
+                : 'team_item-wrapper team_item-withLine'
+            }
+          >
             <h2 className='team__list_item'>Административный персонал</h2>
-            <img className={adminOpen? 'team__item_dot open': 'team__item_dot'} src={dotSvg} alt='dot' />
+            <img
+              className={adminOpen ? 'team__item_dot open' : 'team__item_dot'}
+              src={dotSvg}
+              alt='dot'
+            />
           </div>
           {adminOpen && <ManList list={supportTeam} />}
         </li>

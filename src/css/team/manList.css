@@ -25,3 +25,35 @@
   text-align: center;
   color: #be0000;
 }
+@media (max-width: 1024px){
+  .man__box{
+    width: 100%;
+    margin-top: 40px;
+    gap: 16px;
+  }
+  .man>img{
+    border-radius: 0px;
+    width: 100%;
+  }
+  .man{
+    width: 100%;
+    gap: 40px;
+  }
+  .man_name{
+    font-size: 48px;
+  }
+  .man_role{
+    font-size: 48px;
+  }
+}
+@media (max-width: 576px){
+  .man{
+    gap: 16px;
+  }
+  .man_name{
+    font-size: 36px;
+  }
+  .man_role{
+    font-size: 36px;
+  }
+}

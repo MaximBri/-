@@ -11,3 +11,13 @@ pages:
       - public
   only:
     - master
+
+backend:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t backend_image -f backend_django/Dockerfile .
+  only:
+    - master

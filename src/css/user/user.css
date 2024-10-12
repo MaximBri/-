@@ -1,0 +1,90 @@
+.user{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user__info{
+  width: 100%;
+  padding: 100px;
+  text-align: center;
+  background: linear-gradient(180deg, #be0000 0%, #000 68%);
+}
+.user_name{
+  font-size: 48px;
+  margin-bottom: 50px;
+}
+.user_surname{
+  font-size: 96px;
+}
+.user__list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+.user__list_btn{
+  font-weight: 600;
+  font-size: 48px;
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.user_btn-active{
+  border-bottom: 3px solid #be0000;
+}
+.user_container{
+  width: 100%;
+  padding: 0 20px;
+  margin-inline: auto;
+}
+.user_inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.goods_list{
+  width: 80%;
+}
+@media (max-width: 1024px){
+  .goods_list{
+    width: 90%;
+  }
+  .user__info{
+    padding: 50px;
+  }
+  .user_name{
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  .user_surname{
+    font-size: 48px;
+  }
+  .user__list{
+    gap: 50px;
+  }
+  .user__list_btn{
+    font-size: 26px;
+  }
+}
+@media (max-width: 576px){
+  .goods_list{
+    width: 100%;
+  }
+  .user__info{
+    padding: 20px;
+  }
+  .user_name{
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .user_surname{
+    font-size: 26px;
+  }
+  .user__list{
+    gap: 30px;
+  }
+  .user__list_btn{
+    font-size: 16px;
+  }
+}

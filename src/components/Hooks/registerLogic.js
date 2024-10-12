@@ -66,6 +66,7 @@ const useRegisterLogic = () => {
             setTextForUser('Вы уже зарегистрированы')
           }
           else {
+            console.log(responseData)
             setTextForUser('')
             dispatch(setData(data))
             dispatch(setRegisterForm(false))

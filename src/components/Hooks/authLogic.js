@@ -1,9 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { setData } from '../../RTK/slices/personSlice'
 import { setAuthForm } from '../../RTK/slices/authFormsSlice'
+import { hashData } from './hesh'
 
 const useAuthLogic = () => {
   const dispatch = useDispatch()
@@ -46,13 +47,25 @@ const useAuthLogic = () => {
           return response.json()
         })
         .then((responseData) => {
-          if(responseData.error){
+          if (responseData.error) {
             setTextForUser('Неправильный логин или пароль')
-          }
-          else {
-            const data = responseData.success.user
-            dispatch(setData({email: data.email, first_name: data.full_name}))
+          } else {
+            // console.log(responseData)
+            const temp = responseData.success.user
+            let data = {
+              email: temp.email,
+              name: temp.full_name,
+            }
+            let tokens = {
+              access: responseData.success.access,
+              refresh: responseData.success.refresh,
+            }
+            dispatch(setData({...data, ...tokens}))
             dispatch(setAuthForm(false))
+            data = hashData(data)
+            localStorage.setItem('User', data)
+            tokens = hashData(tokens)
+            localStorage.setItem('Tokens', tokens)
             navigate('/')
           }
         })
@@ -62,6 +75,7 @@ const useAuthLogic = () => {
             setTextForUser('Неправильный логин или пароль')
           else setTextForUser('Произошла ошибка. Попробуйте снова')
         })
+      
     }
   }
   return {

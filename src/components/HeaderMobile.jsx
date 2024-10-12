@@ -1,7 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { deHashData } from './Hooks/hesh'
+import { setData, setAllFields } from '../RTK/slices/personSlice'
 import logo from '../images/globals/logo.png'
 import burgerSvg from '../images/mainPage/burger.svg'
 import personSvg from '../images/mainPage/person.svg'
@@ -9,7 +11,29 @@ import backetSvg from '../images/mainPage/basket.svg'
 import '../css/main/headerMobile.css'
 
 const HeaderMobile = () => {
+  // console.log('HeaderMobile update')
+  const dispatch = useDispatch()
   const [isOpen, setIsOpen] = React.useState(false)
+  React.useEffect(() => {
+    let userData = localStorage.getItem('User')
+    console.log(userData)
+    if (userData) {
+      const {name, surname, patronymic, email, phone, birthday, inRF, gender} = deHashData(userData)
+      const obj = {
+        name,
+        surname,
+        patronymic,
+        email,
+        phone,
+        birthday,
+        inRF,
+        gender
+      }
+      console.log(obj)
+      dispatch(setAllFields(obj))
+      // dispatch(setData(userData))
+    }
+  }, [dispatch])
   const userData = useSelector((state) => state.person)
   return (
     <>
@@ -24,9 +48,15 @@ const HeaderMobile = () => {
           <Link to='shop'>
             <img src={backetSvg} alt='basket' />
           </Link>
-          <Link to={userData.auth ? 'user': 'auth'}>
-            <img src={personSvg} alt='person' />
-          </Link>
+          {userData.auth ? (
+            <Link to='user'>
+              <span className='header_mobile_name'>{userData.data.name[0]}</span>
+            </Link>
+          ) : (
+            <Link to='auth'>
+              <img src={personSvg} alt='person' />
+            </Link>
+          )}
         </nav>
       </header>
       <nav

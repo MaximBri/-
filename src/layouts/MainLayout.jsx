@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
+  // console.log('MainLayout update...')
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth)
   React.useEffect(() => {
     const handleResize = () => {

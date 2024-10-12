@@ -64,6 +64,17 @@
 .burger_close > div:last-child {
   transform: rotate(135deg);
 }
+.header_mobile_name{
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 24px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
 @media (max-width: 768px) {
   .header_burger {
     width: 30px;

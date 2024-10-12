@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setAuthForm, setRegisterForm } from '../RTK/slices/authFormsSlice'
+import { deHashData } from './Hooks/hesh'
+import { setData, setAllFields } from '../RTK/slices/personSlice'
 import Register from './Register'
 import Auth from './Auth'
 import '../css/main/header.css'
@@ -13,8 +15,30 @@ const Header = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    let userData = localStorage.getItem('User')
+    console.log(userData)
+    if (userData) {
+      const {name, surname, patronymic, email, phone, birthday, inRF, gender} = deHashData(userData)
+      const obj = {
+        name,
+        surname,
+        patronymic,
+        email,
+        phone,
+        birthday,
+        inRF,
+        gender
+      }
+      console.log(obj)
+      dispatch(setAllFields(obj))
+      // dispatch(setData(userData))
+    }
+  }, [dispatch])
+
   const userData = useSelector((state) => state.person)
-  const {auth, register} = useSelector((state) => state.auth)
+  const { auth, register } = useSelector((state) => state.auth)
   React.useEffect(() => {
     if (register || auth) {
       document.body.style.overflow = 'hidden'
@@ -28,6 +52,7 @@ const Header = () => {
     dispatch(setRegisterForm(false))
     dispatch(setAuthForm(true))
   }
+
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth)
   React.useEffect(() => {
     const handleResize = () => {
@@ -112,7 +137,14 @@ const Header = () => {
           </Link>
         </nav>
         {!userData.auth ? (
-          <span onClick={() => authNavigate()} className='header_btn'>
+          <span
+            onClick={() => authNavigate()}
+            className={
+              location.pathname === '/user'
+                ? 'header_btn header_btn-active'
+                : 'header_btn'
+            }
+          >
             Войти
             <svg
               width='36'
@@ -154,7 +186,10 @@ const Header = () => {
       </header>
       {auth && (
         <>
-          <div onClick={() => dispatch(setAuthForm(false))} className='modal_wrapper'></div>
+          <div
+            onClick={() => dispatch(setAuthForm(false))}
+            className='modal_wrapper'
+          ></div>
           <Auth func={openRegister} />
         </>
       )}

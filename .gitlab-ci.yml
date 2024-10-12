@@ -18,6 +18,7 @@ backend:
   services:
     - docker:dind
   script:
-    - docker build -t backend_image -f backend_django/Dockerfile .
+    - ls backend_django/Dockerfile
+    - docker build -t kokos_team_django .
   only:
     - master

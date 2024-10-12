@@ -34,13 +34,13 @@ export const shopAccessories = [
     price: 10000,
   },
   {
-    id: 1,
+    id: 2,
     img: form1,
     name: 'Название',
     price: 10000,
   },
   {
-    id: 1,
+    id: 3,
     img: form1,
     name: 'Название',
     price: 10000,

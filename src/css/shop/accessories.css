@@ -49,7 +49,7 @@
   font-size: 32px;
 }
 
-.accessories__card-link {
+.accessories__card-btn {
   background-color: #d32f2f;
   color: white;
   font-size: 24px;
@@ -58,7 +58,7 @@
 }
 
 
-.accessories__card-link:hover {
+.accessories__card-btn:hover {
   background-color: #c62828;
 }
 

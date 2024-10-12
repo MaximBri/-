@@ -35,8 +35,18 @@
 }
 
 .forms__card-sizes {
+  display: flex;
+  gap: 10px;
   font-size: 32px;
   margin-bottom: 25px;
+}
+
+.forms__card-size {
+  cursor: pointer;
+}
+
+.forms__card-size.active {
+  color: #c62828;
 }
 
 .forms__card-info {
@@ -51,7 +61,7 @@
   font-size: 32px;
 }
 
-.forms__card-link {
+.forms__card-btn {
   background-color: #d32f2f;
   color: white;
   font-size: 24px;
@@ -60,15 +70,15 @@
 }
 
 
-.forms__card-link:hover {
+.forms__card-btn:hover {
   background-color: #c62828;
 }
-
 
 @media (max-width: 1000px) {
   .forms__cards {
     justify-content: center;
   }
+
   .forms__title {
     display: flex;
     justify-content: center;
@@ -77,7 +87,7 @@
 }
 
 @media (max-width: 768px) {
-  .forms__card-info{
+  .forms__card-info {
     justify-content: space-between;
   }
 }
@@ -86,17 +96,19 @@
   .forms__title {
     font-size: 48px;
   }
+
   .forms__card-name {
     font-size: 40px;
   }
-  .forms__card-info{
+
+  .forms__card-info {
     justify-content: space-around;
     gap: 10px;
   }
 }
 
 @media (max-width: 400px) {
-  .forms__card-info{
+  .forms__card-info {
     justify-content: center;
     gap: 20px;
   }

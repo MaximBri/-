@@ -28,3 +28,42 @@
 .partners__description {
   font-size: 40px;
 }
+
+@media (max-width: 768px) {
+
+  .partners__item {
+    padding-bottom: 40px;
+  }
+  .partners__name {
+    font-size: 48px;
+  }
+
+  .partners__description {
+    font-size: 32px;
+  }
+
+  .partners__dot {
+    width: 16px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+  .partners__name {
+    font-size: 36px;
+  }
+
+  .partners__description {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .partners__name {
+    font-size: 32px;
+  }
+
+  .partners__description {
+    font-size: 16px;
+  }
+}

@@ -14,13 +14,16 @@ const AboutPage = () => {
   }
 
   const items = ['История', 'Музей', 'Стадион', 'Партнеры']
+  const components = [<History />, <Museum />, <Stadium />, <Partners />]
   return (
     <div className="about-page">
-      <div className='container'>
-          <div className="about__page-header">
-            <img src={aboutLogo} alt="about logo" className="about__page-logo" />
-            <span className="about__page-title">История</span>
-          </div>
+      <div className='container__about-page'>
+        <div className="about__page-header">
+          <img src={aboutLogo} alt="about logo" className="about__page-logo" />
+          <span className="about__page-title">
+            {items[isActiveNav]}
+          </span>
+        </div>
         <div className='about__page'>
           <ul className="about__page-items">
             {items.map((item, index) => (
@@ -34,10 +37,7 @@ const AboutPage = () => {
             ))}
           </ul>
           <div className="about__page-content">
-            <History />
-            <Museum />
-            <Stadium />
-            <Partners />
+            {components[isActiveNav]}
           </div>
         </div>
       </div>

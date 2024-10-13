@@ -21,9 +21,11 @@ export const History = () => {
       <div className="history__logos">
         <div className="history__logo">
           <img src={oldLogo} alt="old-logo" className="history__logo-img" />
+          <span className="history__logo-text" >01.12.2022</span>
         </div>
         <div className="history__logo">
           <img src={newLogo} alt="new-logo" className="history__logo-img" />
+          <span className="history__logo-text">01.12.2022</span>
         </div>
       </div>
     </div>

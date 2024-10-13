@@ -28,19 +28,19 @@ export const shopForms = [
 
 export const shopAccessories = [
   {
-    id: 1,
+    id: 5,
     img: form1,
     name: 'Название',
     price: 10000,
   },
   {
-    id: 2,
+    id: 7,
     img: form1,
     name: 'Название',
     price: 10000,
   },
   {
-    id: 3,
+    id: 8,
     img: form1,
     name: 'Название',
     price: 10000,

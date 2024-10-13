@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { deHashData } from './Hooks/hesh'
 import { setAllFields } from '../RTK/slices/personSlice'
+import { setAllCart } from '../RTK/slices/cartSlice'
 import logo from '../images/globals/logo.png'
 import burgerSvg from '../images/mainPage/burger.svg'
 import personSvg from '../images/mainPage/person.svg'
@@ -16,6 +17,7 @@ const HeaderMobile = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   React.useEffect(() => {
     let userData = localStorage.getItem('User')
+    let cart = localStorage.getItem('Cart')
     if (userData) {
       const {
         name,
@@ -38,6 +40,11 @@ const HeaderMobile = () => {
         gender,
       }
       dispatch(setAllFields(obj))
+    }
+    if(cart) {
+      cart = deHashData(cart)
+      console.log(cart)
+      if(cart.length) dispatch(setAllCart(cart))
     }
   }, [dispatch])
   const userData = useSelector((state) => state.person)

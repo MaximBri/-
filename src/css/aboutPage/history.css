@@ -1,3 +1,7 @@
+.history {
+  margin-bottom: 150px;
+}
+
 .history__block {
   margin-bottom: 150px;
 }
@@ -13,6 +17,7 @@
 
 .history__logo-title {
   font-size: 96px;
+  text-align: center;
   margin-bottom: 150px;
 }
 
@@ -22,8 +27,110 @@
   align-items: center;
 }
 
+.history__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
 .history__logo-img {
   width: 300px;
   height: 300px;
-  width: 100%;
+}
+
+.history__logo-text {
+  font-size: 64px;
+}
+
+@media (max-width: 1150px) {
+  .history__title {
+    font-size: 48px;
+  }
+
+  .history__text {
+    font-size: 36px;
+  }
+
+  .history__logo-title {
+    font-size: 64px;
+  }
+
+  .history__logo-img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .history__logo-text {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .history__block {
+    margin-bottom: 80px;
+  }
+
+  .history__title {
+    font-size: 40px;
+  }
+
+  .history__text {
+    font-size: 32px;
+  }
+
+  .history__logo-title {
+    font-size: 48px;
+    margin-bottom: 60px;
+  }
+
+  .history__logo-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .history__logo-text {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 550px) {
+  .history__title {
+    font-size: 36px;
+  }
+
+  .history__text {
+    font-size: 24px;
+  }
+
+  .history__logo-title {
+    font-size: 40px;
+  }
+
+  .history__logo-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .history__logo-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .history {
+    margin-bottom: 40px;
+  }
+
+  .history__title {
+    font-size: 24px;
+  }
+
+  .history__text {
+    font-size: 16px;
+  }
+
+  .history__logo-title {
+    font-size: 20px;
+  }
 }

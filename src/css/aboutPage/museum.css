@@ -25,14 +25,14 @@
   font-size: 40px;
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
   border-bottom: 1px solid #fff;
   padding-top: 25px;
   padding-bottom: 25px;
 }
 
 .museum__card-place {
-padding-right: 80px;
+  padding-right: 80px;
 }
 
 .museum__card-tournament {
@@ -45,4 +45,48 @@ padding-right: 80px;
 
 .museum__dot .open {
   transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+
+  .museum__item {
+    padding-bottom: 40px;
+  }
+
+  .museum__dot {
+    width: 16px;
+    height: 8px;
+  }
+
+  .museum__card-place {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 550px) {
+  .museum__title {
+    font-size: 48px;
+  }
+
+  .museum__month-title {
+    font-size: 36px;
+  }
+
+  .museum__card__item {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .museum__title {
+    font-size: 36px;
+  }
+
+  .museum__month-title {
+    font-size: 32px;
+  }
+
+  .museum__card__item {
+    font-size: 20px;
+  }
 }

@@ -3,7 +3,12 @@ import '../../css/shop/forms.css'
 import { useState } from 'react'
 
 export const Forms = ({ handleClick, isInCart }) => {
-  const [isActiveSize, setIsActiveSize] = useState(0)
+  const initialActiveSizes = shopForms.reduce((acc, item) => {
+    acc[item.id] = 0;
+    return acc;
+  }, {});
+
+  const [isActiveSize, setIsActiveSize] = useState(initialActiveSizes)
 
   const handleClickSize = (itemId, index) => {
     setIsActiveSize(prevSize => ({

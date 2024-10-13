@@ -1,0 +1,29 @@
+.history__block {
+  margin-bottom: 150px;
+}
+
+.history__title {
+  font-size: 64px;
+  margin-bottom: 80px;
+}
+
+.history__text {
+  font-size: 40px;
+}
+
+.history__logo-title {
+  font-size: 96px;
+  margin-bottom: 150px;
+}
+
+.history__logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history__logo-img {
+  width: 300px;
+  height: 300px;
+  width: 100%;
+}

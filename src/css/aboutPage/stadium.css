@@ -1,0 +1,12 @@
+.stadium {
+  margin-bottom: 150px;
+}
+
+.stadium__title {
+  font-size: 64px;
+  margin-bottom: 80px;
+}
+
+.stadium__text {
+  font-size: 40px;
+}

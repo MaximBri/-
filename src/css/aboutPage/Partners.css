@@ -1,0 +1,30 @@
+.partners__item {
+  padding-bottom: 150px;
+}
+
+.partners__dot {
+  transition: transform .3s ease;
+}
+
+.partners__dot .open {
+  transform: rotate(180deg);
+}
+
+.partners__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.partners__name {
+  font-size: 64px;
+
+}
+
+.partners__description {
+  font-size: 40px;
+}

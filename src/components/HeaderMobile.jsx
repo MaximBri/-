@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { deHashData } from './Hooks/hesh'
-import { setData, setAllFields } from '../RTK/slices/personSlice'
+import { setAllFields } from '../RTK/slices/personSlice'
 import logo from '../images/globals/logo.png'
 import burgerSvg from '../images/mainPage/burger.svg'
 import personSvg from '../images/mainPage/person.svg'
@@ -16,9 +16,17 @@ const HeaderMobile = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   React.useEffect(() => {
     let userData = localStorage.getItem('User')
-    console.log(userData)
     if (userData) {
-      const {name, surname, patronymic, email, phone, birthday, inRF, gender} = deHashData(userData)
+      const {
+        name,
+        surname,
+        patronymic,
+        email,
+        phone,
+        birthday,
+        inRf,
+        gender,
+      } = deHashData(userData)
       const obj = {
         name,
         surname,
@@ -26,12 +34,10 @@ const HeaderMobile = () => {
         email,
         phone,
         birthday,
-        inRF,
-        gender
+        inRF: inRf,
+        gender,
       }
-      console.log(obj)
       dispatch(setAllFields(obj))
-      // dispatch(setData(userData))
     }
   }, [dispatch])
   const userData = useSelector((state) => state.person)
@@ -50,7 +56,9 @@ const HeaderMobile = () => {
           </Link>
           {userData.auth ? (
             <Link to='user'>
-              <span className='header_mobile_name'>{userData.data.name[0]}</span>
+              <span className='header_mobile_name'>
+                {userData.data.name[0]}
+              </span>
             </Link>
           ) : (
             <Link to='auth'>

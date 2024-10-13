@@ -1,21 +1,21 @@
 const matches = [
   {
     id: 1,
-    time: '5 октября, 19:00',
+    time: '2024-10-12T11:00:00Z',
     completed: true,
     data: [0, 3],
     url: 'youtube.com',
   },
   {
     id: 2,
-    time: '19 октября, 16:30',
+    time: '2024-10-19T12:00:00Z',
     completed: false,
     data: [0, 0],
     url: 'youtube.com',
   },
   {
     id: 3,
-    time: '30 октября, 11:00',
+    time: '2024-10-15T13:00:00Z',
     completed: false,
     data: [0, 0],
     url: 'youtube.com',

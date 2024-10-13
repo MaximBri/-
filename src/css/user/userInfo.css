@@ -21,7 +21,7 @@
   align-items: center;
   gap: 40px;
 }
-.user__info_btn{
+.user__info_btn {
   text-wrap: nowrap;
   margin-top: 30px;
   font-weight: 600;
@@ -31,53 +31,35 @@
   background-color: #be0000;
   width: min-content;
 }
-.user__info_err{
+.user__info_err {
   width: 100%;
   text-align: center;
   font-size: 20px;
   background-color: #be0000;
   padding: 20px 0;
 }
-/* .user__checkbox {
-  font-size: 36px;
-}
-.user__checkbox > input {
-  margin-right: 40px;
-  width: 20px;
-  height: 20px;
-}
-.user__checkbox > input {
-  background-color: #be0000;
-  display: none;
-}
-.radio-custom {
-  display: inline-block;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-.user__checkbox>input:checked + .radio-custom::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
-  background: #be0000; 
-  border-radius: 50%;
-}
-.user__info_checkbox {
-  margin: 30px 0;
+.user__info_radio {
   display: flex;
   gap: 150px;
-}  */
+}
+.user__info_radio-btn {
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
 @media (max-width: 1024px) {
+  .user__info_radio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin: 30px 0 50px;
+    gap: 50px;
+  }
+  .user__info_radio-btn {
+    font-size: 24px;
+    gap: 30px;
+  }
   .user__info_container {
     margin: 26px 0;
     padding-inline: 20px;
@@ -91,13 +73,20 @@
     font-size: 16px;
     margin-bottom: 20px;
   }
-  .user__info_btn{
+  .user__info_btn {
     margin-top: 20px;
     font-size: 18px;
     padding: 15px 30px;
   }
 }
-@media (max-width: 576зч) {
+@media (max-width: 576px) {
+  .user__info_radio {
+    gap: 40px;
+  }
+  .user__info_radio-btn {
+    font-size: 20px;
+    gap: 10px;
+  }
   .user__info_container {
     margin: 20px 0;
     padding-inline: 15px;
@@ -106,7 +95,7 @@
   .iser__info_input {
     margin-bottom: 10px;
   }
-  .user__info_btn{
+  .user__info_btn {
     margin-top: 10px;
     font-size: 14px;
     padding: 10px 15px;

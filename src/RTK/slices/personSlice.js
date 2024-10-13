@@ -30,9 +30,6 @@ export const personSlice = createSlice({
       state.data.access = action.payload.access
       state.data.refresh = action.payload.refresh
       if(state.data.name) state.auth = true
-      // console.log(state.data.access)
-      // console.log(state.data.refresh)
-      // console.log(state.auth, state.data.email, state.data.name)
     },
     setAllFields: (state, action) => {
       state.data = action.payload

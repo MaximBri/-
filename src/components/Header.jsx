@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { setAuthForm, setRegisterForm } from '../RTK/slices/authFormsSlice'
 import { deHashData } from './Hooks/hesh'
-import { setData, setAllFields } from '../RTK/slices/personSlice'
+import { setAllFields } from '../RTK/slices/personSlice'
 import Register from './Register'
 import Auth from './Auth'
 import '../css/main/header.css'
@@ -18,9 +18,17 @@ const Header = () => {
 
   React.useEffect(() => {
     let userData = localStorage.getItem('User')
-    console.log(userData)
     if (userData) {
-      const {name, surname, patronymic, email, phone, birthday, inRF, gender} = deHashData(userData)
+      const {
+        name,
+        surname,
+        patronymic,
+        email,
+        phone,
+        birthday,
+        inRf,
+        gender,
+      } = deHashData(userData)
       const obj = {
         name,
         surname,
@@ -28,12 +36,10 @@ const Header = () => {
         email,
         phone,
         birthday,
-        inRF,
-        gender
+        inRF: inRf,
+        gender,
       }
-      console.log(obj)
       dispatch(setAllFields(obj))
-      // dispatch(setData(userData))
     }
   }, [dispatch])
 

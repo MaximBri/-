@@ -7,3 +7,4 @@ email_validator==2.2.0
 idna==3.10
 dnspython==2.7.0
 django-cors-headers==4.4.0
+pillow==10.4.0

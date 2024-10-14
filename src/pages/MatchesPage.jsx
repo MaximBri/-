@@ -4,15 +4,16 @@ import MatchesCardMobile from '../components/MatchesCardMobile'
 import MatchesCard from '../components/MatchesCard'
 
 import '../css/matches/matchesPage.css'
-import { newMatches } from '../tempData/matches'
+// import { newMatches } from '../tempData/matches'
 import bgMatches from '../images/matchesPage/matchesMain.jpg'
 import dotSvg from '../images/teamPage/dot.svg'
 
 const MatchesPage = () => {
   const [current, setCurrent] = useState(true)
   const [activeMonth, setActiveMonth] = useState(0)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [futureMatches, setFutureMatches] = useState([])
+  const [pastMatches, setPastMatches] = useState([])
   const handleClick = (index) => {
     setActiveMonth(activeMonth === index ? null : index)
   }
@@ -25,39 +26,46 @@ const MatchesPage = () => {
       .then((responseData) => {
         console.log(responseData)
         const currentTime = new Date()
+        setPastMatches(
+          responseData
+            .filter((item) => new Date(item.play_time) <= currentTime)
+            .sort((a, b) => new Date(b.play_time) - new Date(a.play_time))
+        )
+        setFutureMatches(
+          responseData
+            .filter((item) => new Date(item.play_time) > currentTime)
+            .sort((b, a) => new Date(b.play_time) - new Date(a.play_time))
+        )
       })
       .catch((error) => {
         console.log('Error:', error)
       })
   }, [])
+  console.log(futureMatches)
+  console.log(pastMatches)
   useEffect(() => {
     const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
+      setScreenWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const allMonths = [
-    { name: 'Октябрь 2024', future: true },
-    { name: 'Ноябрь 2024', future: true },
-    { name: 'Декабрь 2024', future: true },
-    { name: 'Январь 2025', future: true},
-    { name: 'Январь 2024', future: false },
-    { name: 'Декабрь 2023', future: false },
+    { name: 'октябрь 2024', future: true },
+    { name: 'ноябрь 2024', future: true },
+    { name: 'декабрь 2024', future: true },
+    { name: 'октябрь 2024', future: false },
+    { name: 'сентябрь 2024', future: false },
+    { name: 'август 2024', future: false },
   ]
-
-  const filteredMonths = allMonths.filter(month => current ? month.future : !month.future)
-
-  const filteredMatches = newMatches.filter(match => {
-    if (current && !match.completed) {
-      return true
-    } else if (!current && match.completed) {
-      return true
-    } else return false
-  })
-
+  function convertToMonthYear(dateString) {
+    const date = new Date(dateString)
+    const month = date.toLocaleString('default', { month: 'long' })
+    const year = date.getFullYear()
+    return `${month} ${year}`
+  }
   return (
     <>
       <div className='container'>
@@ -97,11 +105,6 @@ const MatchesPage = () => {
                   src={dotSvg}
                   alt='dotSvg'
                 />
-                {/* <ul>
-                <li>Все турниры</li>
-                <li>МИР Российская премьер лига</li>
-                <li>МИР Российская премьер лига</li>
-              </ul> */}
               </li>
             </ul>
             <ul className='matches__info-select-items'>
@@ -117,31 +120,89 @@ const MatchesPage = () => {
           </div>
         </div>
         <ul className='matches__info-date-items'>
-          {filteredMonths.map((month, i) => (
-            <li key={i} className='matches__info-date-item'>
-              <div
-                className='matches__info-date-item-title'
-                onClick={() => handleClick(i)}
-              >
-                <h3 className='matches__info-date'>{month.name}</h3>
-                <img
-                  src={dotSvg}
-                  alt='team logo'
-                  className={`dot__svg ${activeMonth === i ? 'open' : ''}`}
-                  style={{ transition: 'transform 0.3s ease' }}
-                />
-              </div>
-              <div className='matches__info-date-item-content'>
-                {activeMonth === i && (
-                  screenWidth <= 768 ? (
-                    <MatchesCardMobile matches={filteredMatches} />
-                  ) : (
-                    <MatchesCard matches={filteredMatches} />
+          {current
+            ? allMonths
+                .filter((month) => month.future)
+                .map((item, i) => {
+                  return (
+                    <li key={i} className='matches__info-date-item'>
+                      <div
+                        className='matches__info-date-item-title'
+                        onClick={() => handleClick(i)}
+                      >
+                        <h3 className='matches__info-date'>
+                          {allMonths[i].name}
+                        </h3>
+                        <img
+                          src={dotSvg}
+                          alt='team logo'
+                          className={`dot__svg ${
+                            activeMonth === i ? 'open' : ''
+                          }`}
+                          style={{ transition: 'transform 0.3s ease' }}
+                        />
+                      </div>
+                      <div className='matches__info-date-item-content'>
+                        {activeMonth === i &&
+                          futureMatches.map((item, j) => {
+                            if (
+                              convertToMonthYear(
+                                item.play_time
+                              ).toLocaleLowerCase() ===
+                              allMonths[i].name.toLocaleLowerCase()
+                            ) {
+                              return screenWidth <= 768 ? (
+                                <MatchesCardMobile key={j} match={item} />
+                              ) : (
+                                <MatchesCard key={j} match={item} />
+                              )
+                            }
+                          })}
+                      </div>
+                    </li>
                   )
-                )}
-              </div>
-            </li>
-          ))}
+                })
+            : allMonths
+                .filter((month) => !month.future)
+                .map((item, i) => {
+                  return (
+                    <li key={i} className='matches__info-date-item'>
+                      <div
+                        className='matches__info-date-item-title'
+                        onClick={() => handleClick(i)}
+                      >
+                        <h3 className='matches__info-date'>{item.name}</h3>
+                        <img
+                          src={dotSvg}
+                          alt='team logo'
+                          className={`dot__svg ${
+                            activeMonth === i ? 'open' : ''
+                          }`}
+                          style={{ transition: 'transform 0.3s ease' }}
+                        />
+                      </div>
+                      <div className='matches__info-date-item-content'>
+                        {activeMonth === i &&
+                          pastMatches.map((item, j) => {
+                            console.log(convertToMonthYear(item.play_time))
+                            console.log(allMonths[i].name.toLocaleLowerCase())
+                            if (
+                              convertToMonthYear(
+                                item.play_time
+                              ).toLocaleLowerCase() ===
+                              allMonths[i+3].name.toLocaleLowerCase()
+                            ) {
+                              return screenWidth <= 768 ? (
+                                <MatchesCardMobile key={j} match={item} />
+                              ) : (
+                                <MatchesCard key={j} match={item} />
+                              )
+                            }
+                          })}
+                      </div>
+                    </li>
+                  )
+                })}
         </ul>
       </div>
     </>

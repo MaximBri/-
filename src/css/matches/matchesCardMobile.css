@@ -25,6 +25,7 @@
 }
 
 .matches__card-tournament-mobile {
+  text-align: center;
   font-size: 10px;
   color: #808080;
   margin-bottom: 18px;
@@ -32,12 +33,20 @@
 }
 
 .matches__card-time-mobile {
+  text-align: center;
   color: #000;
   font-size: 20px;
   margin-bottom: 20px;
 }
-
+.matches__card_clock_info{
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 .matches__score-mobile {
+  text-align: center;
   color: #000;
   font-size: 36px;
   margin-top: 50px;
@@ -45,26 +54,23 @@
 }
 
 .matches__card-clocks-mobile {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  flex-grow: 1;
 }
 
 .matches__card-clock-mobile {
+  text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-
 .matches__card-clock-mobile .clock {
   color: #d32f2f;
   font-size: 24px;
-}
-
-.matches__card-clock-mobile span {
-  color: #000;
-  font-size: 14px;
 }
 
 .matches__card-link-mobile {

@@ -43,7 +43,6 @@ const HeaderMobile = () => {
     }
     if(cart) {
       cart = deHashData(cart)
-      console.log(cart)
       if(cart.length) dispatch(setAllCart(cart))
     }
   }, [dispatch])

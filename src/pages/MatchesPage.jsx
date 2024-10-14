@@ -24,7 +24,6 @@ const MatchesPage = () => {
         return response.json()
       })
       .then((responseData) => {
-        console.log(responseData)
         const currentTime = new Date()
         setPastMatches(
           responseData
@@ -41,8 +40,6 @@ const MatchesPage = () => {
         console.log('Error:', error)
       })
   }, [])
-  console.log(futureMatches)
-  console.log(pastMatches)
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth)
@@ -184,8 +181,6 @@ const MatchesPage = () => {
                       <div className='matches__info-date-item-content'>
                         {activeMonth === i &&
                           pastMatches.map((item, j) => {
-                            console.log(convertToMonthYear(item.play_time))
-                            console.log(allMonths[i].name.toLocaleLowerCase())
                             if (
                               convertToMonthYear(
                                 item.play_time

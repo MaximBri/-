@@ -6,7 +6,6 @@ import play from '../images/matchesPage/play.svg'
 import '../css/matches/matchesCard.css'
 
 const MatchesCard = ({ match }) => {
-  console.log(match)
   let completed = new Date(match.play_time) <= new Date() ? true: false
   const getMatchResult = (one, two) => {
     if(!completed) return ''

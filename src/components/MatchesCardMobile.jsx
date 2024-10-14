@@ -38,7 +38,6 @@ const MatchesCardMobile = ({ match }) => {
     return () => clearInterval(interval)
   }, [currentTime])
   const { difference, days, hours, minutes } = calcTime(match)
-  console.log(days, hours, minutes)
   return (
     <div className='matches__card-mobile'>
       <div

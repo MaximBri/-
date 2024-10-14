@@ -6,6 +6,10 @@ class Place(models.Model):
     city = models.CharField(verbose_name='Город', max_length=150)
     country = models.CharField(verbose_name='Страна', max_length=150)
 
+    class Meta:
+        verbose_name = 'Место проведения встречи'
+        verbose_name_plural = 'Места проведения встреч'
+
     def __str__(self):
         return self.location
 
@@ -13,12 +17,20 @@ class Place(models.Model):
 class Team(models.Model):
     title = models.CharField(verbose_name='Название', max_length=150)
 
+    class Meta:
+        verbose_name = 'Команда'
+        verbose_name_plural = 'Команды'
+
     def __str__(self):
         return self.title
 
 
 class Tournament(models.Model):
     title = models.CharField(verbose_name='Наименование соревнования', max_length=150)
+
+    class Meta:
+        verbose_name = 'Соревнование'
+        verbose_name_plural = 'Соревнования'
 
     def __str__(self):
         return self.title
@@ -34,6 +46,10 @@ class Trainer(models.Model):
         blank=True,
         null=True
     )
+
+    class Meta:
+        verbose_name = 'Тренер'
+        verbose_name_plural = 'Тренера'
 
     def __str__(self):
         return self.name
@@ -63,6 +79,10 @@ class Player(models.Model):
         null=True
     )
     status = models.BooleanField('Статус', default=True)
+
+    class Meta:
+        verbose_name = 'Игрок'
+        verbose_name_plural = 'Игроки'
 
     def __str__(self):
         return self.name
@@ -109,6 +129,10 @@ class Match(models.Model):
         blank=True,
         null=True
     )
+
+    class Meta:
+        verbose_name = 'Матч'
+        verbose_name_plural = 'Матчи'
 
     def __str__(self):
         return f'{self.team_one}:{self.team_two}'

@@ -2,14 +2,6 @@
   padding-bottom: 150px;
 }
 
-.partners__dot {
-  transition: transform .3s ease;
-}
-
-.partners__dot .open {
-  transform: rotate(180deg);
-}
-
 .partners__header {
   display: flex;
   justify-content: space-between;
@@ -19,6 +11,15 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #fff;
 }
+
+.partners__dot {
+  transition: transform .3s ease;
+}
+
+.partners__dot .open {
+  transform: rotate(180deg);
+}
+
 
 .partners__name {
   font-size: 64px;
@@ -34,6 +35,7 @@
   .partners__item {
     padding-bottom: 40px;
   }
+
   .partners__name {
     font-size: 48px;
   }

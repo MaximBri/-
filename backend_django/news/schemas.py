@@ -1,5 +1,5 @@
 from ninja import Schema
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 
@@ -17,6 +17,10 @@ class AuthorSchema(Schema):
     id: int
     user: str
 
+    @staticmethod
+    def resolve_user(author):
+        return author.user.email
+
 
 class NewsSchema(Schema):
     id: int
@@ -24,8 +28,8 @@ class NewsSchema(Schema):
     content: str
     created_at: datetime
     updated_at: datetime
-    category: CategorySchema = None
+    category: Optional[CategorySchema] = None
     tags: List[TagSchema] = []
-    author: AuthorSchema = None
+    author: Optional[AuthorSchema] = None
     is_published: bool
-    image: str = None
+    image: Optional[str] = None

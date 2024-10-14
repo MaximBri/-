@@ -38,6 +38,7 @@ class Tournament(models.Model):
 
 class Trainer(models.Model):
     name = models.CharField('Имя', max_length=150)
+    photo = models.ImageField('Фото', upload_to='trainers_images/', blank=True, null=True)
     team = models.ForeignKey(
         Team,
         verbose_name='Команда',
@@ -57,6 +58,7 @@ class Trainer(models.Model):
 
 class Player(models.Model):
     name = models.CharField('Имя', max_length=150)
+    photo = models.ImageField('Фото', upload_to='players_images/', blank=True, null=True)
     ROLE_CHOICES = [
         ('Goalkeeper', 'Вратарь'),
         ('Defender', 'Защитник'),

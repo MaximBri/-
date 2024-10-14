@@ -5,6 +5,7 @@
   align-items: center;
 }
 .user__info{
+  position: relative;
   width: 100%;
   padding: 100px;
   text-align: center;
@@ -46,6 +47,15 @@
 .goods_list{
   width: 80%;
 }
+.user__exit_btn{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: transparent;
+  font-weight: 600;
+  color: #fff;
+  font-size: 26px;
+}
 @media (max-width: 1024px){
   .goods_list{
     width: 90%;
@@ -66,8 +76,18 @@
   .user__list_btn{
     font-size: 26px;
   }
+  .user__exit_btn{
+    top: 15px;
+    right: 20px;
+    font-size: 22px;
+  }
 }
 @media (max-width: 576px){
+  .user__exit_btn{
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+  }
   .goods_list{
     width: 100%;
   }

@@ -60,17 +60,22 @@ const useRegisterLogic = () => {
             setTextForUser(
               'Пароль должен содержать 1 заглавную букву (A - Z), 1 цифру и быть не менее 8 символов'
             )
-          } else if (
-            responseData.error
-          ) {
+          } else if (responseData.error) {
             setTextForUser('Вы уже зарегистрированы')
-          }
-          else {
+          } else {
             console.log(responseData)
             setTextForUser('')
+            const data = {
+              email,
+              name: name.split(' ')[0],
+            }
+            console.log(data)
             dispatch(setData(data))
             dispatch(setRegisterForm(false))
-            navigate('/')
+            if (window.innerWidth < 1440) {
+              navigate('/auth')
+            }
+            else navigate('/')
           }
         })
         .catch((error) => {

@@ -1,7 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { setAllFields, setAuth } from '../RTK/slices/personSlice'
 import Matches from '../components/user/Matches'
 import Goods from '../components/user/Goods'
 import UserInfo from '../components/user/UserInfo'
@@ -9,8 +10,10 @@ import { getAuth } from '../RTK/slices/personSlice'
 import '../css/user/user.css'
 import tickets from '../tempData/tickets'
 import goods from '../tempData/goods'
+import { hashData } from '../components/Hooks/hesh'
 
 const UserPage = () => {
+  const dispatch = useDispatch()
   const auth = useSelector(getAuth)
   const userData = useSelector((state) => state.person)
   const navigate = useNavigate()
@@ -21,31 +24,39 @@ const UserPage = () => {
     token1: '123',
     token2: '123',
   }
-  // const tickets = []
-  // const goods = []
   React.useEffect(() => {
     if (!auth) navigate('/')
-    // fetch(apiUrl, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(body),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err))
   }, [])
   const items = [
     <Goods tickets={tickets} goods={goods} />,
-    <Matches matches={matches}/>,
+    <Matches matches={matches} />,
     <UserInfo />,
   ]
+  const exit = () => {
+    let data = {
+      name: '',
+      surname: '',
+      patronymic: '',
+      email: '',
+      phone: '',
+      birthday: '',
+      inRF: true,
+      gender: 'male',
+    }
+    dispatch(setAuth(false))
+    dispatch(setAllFields(data))
+    data = hashData(data)
+    localStorage.setItem('User', data)
+    navigate('/')
+  }
   return (
     <section className='user'>
       <div className='user__info'>
         <h1 className='user_name'>{userData.data.name}</h1>
         <h2 className='user_surname'>{userData.data.surname}</h2>
+        <button onClick={() => exit()} className='user__exit_btn'>
+          Выйти
+        </button>
       </div>
       <nav className='user_container user__list'>
         <button

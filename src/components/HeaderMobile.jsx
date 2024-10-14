@@ -41,9 +41,9 @@ const HeaderMobile = () => {
       }
       dispatch(setAllFields(obj))
     }
-    if(cart) {
+    if (cart) {
       cart = deHashData(cart)
-      if(cart.length) dispatch(setAllCart(cart))
+      if (cart.length) dispatch(setAllCart(cart))
     }
   }, [dispatch])
   const userData = useSelector((state) => state.person)

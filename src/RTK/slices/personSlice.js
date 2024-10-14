@@ -20,8 +20,8 @@ export const personSlice = createSlice({
   name: 'person',
   initialState,
   reducers: {
-    setAuth: (state) => {
-      state.auth = true
+    setAuth: (state, action) => {
+      state.auth = action.payload
       console.log(state.auth)
     },
     setData: (state, action) => {

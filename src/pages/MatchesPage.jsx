@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import '../css/matches/matchesPage.css'
-import bgMatches from '../images/matchesPage/matchesMain.jpg'
-import { newMatches } from '../tempData/matches'
-import MatchesCard from '../components/MatchesCard'
+import convertDataTime from '../components/Hooks/convertDataTime'
 import MatchesCardMobile from '../components/MatchesCardMobile'
+import MatchesCard from '../components/MatchesCard'
+
+import '../css/matches/matchesPage.css'
+import { newMatches } from '../tempData/matches'
+import bgMatches from '../images/matchesPage/matchesMain.jpg'
 import dotSvg from '../images/teamPage/dot.svg'
 
 const MatchesPage = () => {
@@ -14,7 +16,20 @@ const MatchesPage = () => {
   const handleClick = (index) => {
     setActiveMonth(activeMonth === index ? null : index)
   }
-
+  useEffect(() => {
+    const apiUrl = 'http://127.0.0.1:8000/api/matches/matches/half-year' // убрать хард код
+    fetch(apiUrl)
+      .then((response) => {
+        return response.json()
+      })
+      .then((responseData) => {
+        console.log(responseData)
+        const currentTime = new Date()
+      })
+      .catch((error) => {
+        console.log('Error:', error)
+      })
+  }, [])
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -24,7 +39,6 @@ const MatchesPage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   const allMonths = [
     { name: 'Октябрь 2024', future: true },
     { name: 'Ноябрь 2024', future: true },

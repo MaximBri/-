@@ -38,7 +38,7 @@ class Author(models.Model):
         verbose_name_plural = 'Авторы'
 
     def __str__(self):
-        return self.user
+        return self.user.email
 
 
 class News(models.Model):

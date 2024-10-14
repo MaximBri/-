@@ -5,12 +5,20 @@ from users.models import CustomUser
 class Category(models.Model):
     name = models.CharField(verbose_name='Категория', max_length=150)
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
     def __str__(self):
         return self.name
 
 
 class Tag(models.Model):
     name = models.CharField(verbose_name='Тег', max_length=150)
+
+    class Meta:
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
 
     def __str__(self):
         return self.name
@@ -24,6 +32,10 @@ class Author(models.Model):
         blank=True,
         null=True
     )
+
+    class Meta:
+        verbose_name = 'Автор'
+        verbose_name_plural = 'Авторы'
 
     def __str__(self):
         return self.user
@@ -59,6 +71,7 @@ class News(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
 
     def __str__(self):

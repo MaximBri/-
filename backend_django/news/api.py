@@ -7,7 +7,7 @@ from .schemas import NewsSchema
 router = Router()
 
 
-@router.get("/news", response=List[NewsSchema])
+@router.get("/all", response=List[NewsSchema])
 def get_all_news(request):
     return News.objects.filter(is_published=True).order_by('-created_at')
 

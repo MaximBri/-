@@ -6,12 +6,20 @@ class Place(models.Model):
     city = models.CharField(verbose_name='Город', max_length=150)
     country = models.CharField(verbose_name='Страна', max_length=150)
 
+    class Meta:
+        verbose_name = 'Место проведения встречи'
+        verbose_name_plural = 'Места проведения встреч'
+
     def __str__(self):
         return self.location
 
 
 class Team(models.Model):
     title = models.CharField(verbose_name='Название', max_length=150)
+
+    class Meta:
+        verbose_name = 'Команда'
+        verbose_name_plural = 'Команды'
 
     def __str__(self):
         return self.title
@@ -20,12 +28,17 @@ class Team(models.Model):
 class Tournament(models.Model):
     title = models.CharField(verbose_name='Наименование соревнования', max_length=150)
 
+    class Meta:
+        verbose_name = 'Соревнование'
+        verbose_name_plural = 'Соревнования'
+
     def __str__(self):
         return self.title
 
 
 class Trainer(models.Model):
     name = models.CharField('Имя', max_length=150)
+    photo = models.ImageField('Фото', upload_to='trainers_images/', blank=True, null=True)
     team = models.ForeignKey(
         Team,
         verbose_name='Команда',
@@ -35,12 +48,17 @@ class Trainer(models.Model):
         null=True
     )
 
+    class Meta:
+        verbose_name = 'Тренер'
+        verbose_name_plural = 'Тренера'
+
     def __str__(self):
         return self.name
 
 
 class Player(models.Model):
     name = models.CharField('Имя', max_length=150)
+    photo = models.ImageField('Фото', upload_to='players_images/', blank=True, null=True)
     ROLE_CHOICES = [
         ('Goalkeeper', 'Вратарь'),
         ('Defender', 'Защитник'),
@@ -64,6 +82,10 @@ class Player(models.Model):
     )
     status = models.BooleanField('Статус', default=True)
 
+    class Meta:
+        verbose_name = 'Игрок'
+        verbose_name_plural = 'Игроки'
+
     def __str__(self):
         return self.name
 
@@ -84,7 +106,7 @@ class Match(models.Model):
         related_name='matches_team_one',
         blank=True,
         null=True
-    ),
+    )
     team_two = models.ForeignKey(
         Team,
         verbose_name='Команда 2',
@@ -92,7 +114,7 @@ class Match(models.Model):
         related_name='matches_team_two',
         blank=True,
         null=True
-    ),
+    )
     team_one_score = models.IntegerField(verbose_name="Счет команды 1", default=0)
     team_two_score = models.IntegerField(verbose_name="Счет команды 2", default=0)
     place = models.ForeignKey(
@@ -109,6 +131,10 @@ class Match(models.Model):
         blank=True,
         null=True
     )
+
+    class Meta:
+        verbose_name = 'Матч'
+        verbose_name_plural = 'Матчи'
 
     def __str__(self):
         return f'{self.team_one}:{self.team_two}'

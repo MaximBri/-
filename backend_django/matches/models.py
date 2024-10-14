@@ -106,7 +106,7 @@ class Match(models.Model):
         related_name='matches_team_one',
         blank=True,
         null=True
-    ),
+    )
     team_two = models.ForeignKey(
         Team,
         verbose_name='Команда 2',
@@ -114,7 +114,7 @@ class Match(models.Model):
         related_name='matches_team_two',
         blank=True,
         null=True
-    ),
+    )
     team_one_score = models.IntegerField(verbose_name="Счет команды 1", default=0)
     team_two_score = models.IntegerField(verbose_name="Счет команды 2", default=0)
     place = models.ForeignKey(

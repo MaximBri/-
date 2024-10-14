@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import convertDataTime from './Hooks/convertDataTime'
 import matches from '../tempData/matches'
 import '../css/main/matches.css'
 import imgPng from '../images/mainPage/kokocGroupLogo.png'
@@ -24,23 +25,6 @@ const ThreeMatches = () => {
       }
     }
     return { ...timeLeft, difference }
-  }
-  const convertDataTime = (dateString) => {
-    const date = new Date(dateString)
-    const options = {
-      day: 'numeric',
-      month: 'long',
-      timeZone: 'UTC',
-    }
-    const formattedDate = date.toLocaleString('ru-RU', options)
-    const time = date.toLocaleTimeString('ru-RU', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC',
-    })
-    const [day, month] = formattedDate.split(' ')
-    const capitalizedMonth = month.toUpperCase()
-    return `${day} ${capitalizedMonth}, ${time}`
   }
   return (
     <ul className='matches__box'>

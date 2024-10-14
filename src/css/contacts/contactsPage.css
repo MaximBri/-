@@ -1,0 +1,136 @@
+.container__contact-page {
+  margin-inline: 50px;
+}
+
+.contact__page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 128px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #2b2b2b 0%, #333 47%, #000 100%);
+  padding: 150px 0;
+  margin-bottom: 50px;
+}
+
+.contact__page-title {
+  margin-top: 20px;
+}
+
+.contact__content {
+  padding: 0 70px 0 120px;
+}
+
+.contact__item {
+  margin-bottom: 150px;
+}
+
+.contact__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.contact__item-dot {
+  transition: transform .3s ease;
+}
+
+.contact__item-dot.open {
+  transform: rotate(180deg);
+}
+
+.contact__item-title {
+  font-size: 64px;
+}
+
+.contact__item-text {
+  font-style: normal;
+  font-size: 40px;
+}
+
+@media (max-width: 1200px) {
+  .contact__content {
+    padding: 0 20px 0 60px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .contact__content {
+    padding: 0 10px;
+  }
+
+  .contact__item-text {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container__contact-page {
+    margin: 0;
+  }
+
+  .contact__page-header {
+    font-size: 96px;
+  }
+
+  .contact__item-title {
+    font-size: 52px;
+  }
+
+  .contact__item-text {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact__page-header {
+    height: 200px;
+    font-size: 64px;
+    padding: 50px 0;
+  }
+
+  .contact__page-logo {
+    width: 128px;
+    height: 128px;
+  }
+
+  .contact__item-title {
+    font-size: 48px;
+  }
+
+  .contact__item-text {
+    font-size: 32px;
+  }
+
+  .contact__item {
+    margin-bottom: 50px;
+  }
+
+  .contact__item-dot {
+    width: 16px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 450px) {
+  .contact__page-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .contact__page-header {
+    font-size: 48px;
+  }
+
+  .contact__item-title {
+    font-size: 32px;
+  }
+
+  .contact__item-text {
+    font-size: 16px;
+  }
+}

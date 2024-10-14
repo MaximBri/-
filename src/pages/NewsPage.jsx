@@ -1,18 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import news from '../tempData/news'
+import convertDataTime from '../components/Hooks/convertDataTime'
 import '../css/news/news.css'
 import imgBg from '../images/newsPage/news-bg.png'
-import newsImg from '../images/newsPage/news-img.png'
 
 const NewsPage = () => {
-  const [page, setPage] = React.useState(1)
-  const API_URL = 'api'
+  const [news, setNews] = React.useState([])
+  let [countNews, setCountNews] = React.useState(1)
   React.useEffect(() => {
-    // для показа новостей при клике на кнопку
-    //
-  }, [page])
+    const apiUrl = 'http://127.0.0.1:8000/api/news/news' // убрать хард код
+    fetch(apiUrl)
+      .then((response) => {
+        return response.json()
+      })
+      .then((responseData) => {
+        setNews(responseData)
+      })
+      .catch((error) => {
+        console.log('Error:', error)
+      })
+  }, [])
   return (
     <>
       <div className='container'>
@@ -21,27 +29,37 @@ const NewsPage = () => {
           <h1 className='news_title'>Новости</h1>
         </div>
         <ul className='news__box'>
-          {news.map((item) => {
-            return (
-              <li className='news__new' key={item.id}>
-                <div className='news__about'>
-                  <h2 className='new_title'>{item.title}</h2>
-                  <h3 className='new_subtitle'>{item.description}</h3>
-                  <Link className='new_btn' to='#post'>
-                    Подробнее
-                  </Link>
-                </div>
-                <img className='new_img' src={newsImg} alt='match' />
-                <h4 className='news_time'>{item.time}</h4>
-              </li>
-            )
+          {!news?.length && <h2 className='news_empty'>Новостей нет</h2>}
+          {news.map((item, i) => {
+            if (i < countNews) {
+              return (
+                <li className='news__new' key={item.id}>
+                  <div className='news__about'>
+                    <h2 className='new_title'>{item.title}</h2>
+                    <h3 className='new_subtitle'>{item.content}</h3>
+                    <Link className='new_btn' to='#post'>
+                      Подробнее
+                    </Link>
+                  </div>
+                  <img className='new_img' src={item.image} alt='match' />
+                  <h4 className='news_time'>
+                    {convertDataTime(item.created_at).split(',')[0]}
+                  </h4>
+                </li>
+              )
+            }
           })}
         </ul>
-        <div className='news_bottom'>
-          <span onClick={() => setPage(page + 1)} className='news_button'>
-            Показать ещё
-          </span>
-        </div>
+        {countNews !== news.length && news.length > 0 && (
+          <div className='news_bottom'>
+            <span
+              onClick={() => setCountNews((countNews += 1))}
+              className='news_button'
+            >
+              Показать ещё
+            </span>
+          </div>
+        )}
       </div>
     </>
   )

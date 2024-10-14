@@ -50,7 +50,7 @@ const useAuthLogic = () => {
           if (responseData.error) {
             setTextForUser('Неправильный логин или пароль')
           } else {
-            // console.log(responseData)
+            console.log(responseData)
             const temp = responseData.success.user
             let data = {
               email: temp.email,

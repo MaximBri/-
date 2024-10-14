@@ -38,7 +38,6 @@
 .new_title {
   font-size: 48px;
   margin-bottom: 28px;
-  text-align: center;
 }
 .new_subtitle {
   font-size: 24px;
@@ -65,10 +64,16 @@
 .news_time {
   display: none;
 }
+.news_empty{
+  font-size: 48px;
+  width: 100%;
+  text-align: center;
+}
 @media (max-width: 1024px) {
   .news_title {
     font-size: 64px;
     left: 40px;
+    text-align: center;
   }
   .news__new {
     display: flex;
@@ -79,7 +84,7 @@
     border-radius: 0;
     border-bottom: 2px solid #be0000;
   }
-  .news__new:last-child{
+  .news__new:last-child {
     border-bottom: 0;
   }
   .news_time {
@@ -105,6 +110,9 @@
     font-size: 40px;
     padding: 50px 0;
     text-align: center;
+  }
+  .news_empty{
+    font-size: 20px;
   }
 }
 @media (max-width: 576px) {
@@ -140,7 +148,7 @@
   .news_bottom {
     margin: 30px 0;
   }
-  .news_button{
+  .news_button {
     font-size: 24px;
     padding: 35px 0;
     text-align: center;

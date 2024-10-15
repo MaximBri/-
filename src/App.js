@@ -27,9 +27,9 @@ function App() {
   return (
     <div className='App'>
       <Provider store={store}>
-        <BrowserRouter basename='KOKOC'>
+        <BrowserRouter>
           <Routes>
-            <Route path='' element={<MainLayout />}>
+            <Route path='KOKOC' element={<MainLayout />}>
               <Route path='' element={<MainPage />} />
               <Route path='news' element={<NewsPage />} />
               <Route path='team' element={<TeamPage />} />

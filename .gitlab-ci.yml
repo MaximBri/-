@@ -1,0 +1,24 @@
+image: node:14
+
+pages:
+  stage: deploy
+  script:
+    - npm install
+    - npm run build
+    - mv build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+backend:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - ls backend_django/Dockerfile
+    - docker build -t kokos_team_django .
+  only:
+    - master
